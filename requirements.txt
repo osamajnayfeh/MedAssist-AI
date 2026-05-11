@@ -1,0 +1,14 @@
+flask
+flask-cors
+openai
+python-dotenv
+torch
+torchvision
+numpy
+pandas
+opencv-python
+pillow
+PyPDF2
+langchain
+chromadb
+sentence-transformers

@@ -26,7 +26,7 @@ body {
   background-color: var(--background);
   color: var(--foreground);
   font-family: 'Inter', sans-serif;
-  direction: rtl;
+  direction: inherit;
 }
 
 @layer base {

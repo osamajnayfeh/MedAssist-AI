@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ClinicalMind | AI Medical Intelligence (Frontend)</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script src="assets/js/tailwind-config.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body class="bg-background text-on-background font-body-md overflow-hidden transition-colors duration-300">
+  <!-- Sidebar Navigation (Fixed right for RTL) -->
+  <aside class="fixed h-full w-[sidebar-width] right-0 top-0 border-r border-outline-variant/10 bg-surface-container-lowest dark:bg-surface-dim/95 backdrop-blur-2xl flex flex-col py-8 px-6 z-50 transition-colors duration-300" style="direction: ltr;">
+    <div class="mb-12">
+      <h1 class="font-display-lg text-2xl font-bold text-on-surface tracking-tight">ClinicalMind</h1>
+      <p class="text-[11px] text-primary dark:text-primary-fixed-dim uppercase font-bold tracking-[0.2em] mt-1.5 opacity-90">AI Medical Intelligence</p>
+    </div>
+    <nav class="flex-1 space-y-2 overflow-y-auto pr-2 custom-scrollbar">
+      <a class="bg-primary/10 dark:bg-primary-container/20 text-primary dark:text-primary rounded-xl flex items-center gap-3.5 px-4 py-4 transition-all duration-200 border-l-4 border-primary shadow-sm" href="#">
+        <span class="material-symbols-outlined text-[24px]" data-icon="stethoscope">stethoscope</span>
+        <div class="flex flex-col">
+          <span class="font-headline-sm text-[14px]" data-translate="newDiagnosis">New Diagnosis</span>
+        </div>
+      </a>
+      <div class="pt-8 pb-3 px-4">
+        <span class="text-[11px] uppercase tracking-widest text-outline font-bold opacity-60" data-translate="categories">Categories</span>
+      </div>
+      <div class="space-y-1">
+        <a class="text-on-surface-variant/70 hover:text-on-surface hover:bg-surface-container-high dark:hover:bg-white/5 rounded-xl flex items-center gap-3.5 px-4 py-3.5 transition-all duration-200" href="#">
+          <span class="material-symbols-outlined text-[22px]">psychology</span>
+          <span class="font-headline-sm text-[14px]" data-translate="brainXray">Brain X-ray</span>
+        </a>
+        <a class="text-on-surface-variant/70 hover:text-on-surface hover:bg-surface-container-high dark:hover:bg-white/5 rounded-xl flex items-center gap-3.5 px-4 py-3.5 transition-all duration-200" href="#">
+          <!-- Replaced unreliable material icon text with inline SVG lung icon and larger label -->
+          <span class="inline-flex items-center justify-center w-6 h-6 text-on-surface-variant">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5">
+              <path d="M6 2c1.5 1 2 3 2 5s-1 4-2 5" />
+              <path d="M18 2c-1.5 1-2 3-2 5s1 4 2 5" />
+              <path d="M12 7v10" />
+              <path d="M9 21c1-1 2-2 3-2s2 1 3 2" />
+            </svg>
+          </span>
+          <span class="font-headline-md text-[16px]" data-translate="chestXray">Chest X-ray</span>
+        </a>
+        <a class="text-on-surface-variant/70 hover:text-on-surface hover:bg-surface-container-high dark:hover:bg-white/5 rounded-xl flex items-center gap-3.5 px-4 py-3.5 transition-all duration-200" href="#">
+          <span class="material-symbols-outlined text-[22px]">orthopedics</span>
+          <span class="font-headline-sm text-[14px]" data-translate="boneXray">Bone X-ray</span>
+        </a>
+      </div>
+      <div class="pt-8 pb-3 px-4">
+        <span class="text-[11px] uppercase tracking-widest text-outline font-bold opacity-60" data-translate="history">History</span>
+      </div>
+      <a class="text-on-surface-variant/70 hover:text-on-surface hover:bg-surface-container-high dark:hover:bg-white/5 rounded-xl flex items-center gap-3.5 px-4 py-4 transition-all duration-200" href="#">
+        <span class="material-symbols-outlined text-[24px]" data-icon="history">history</span>
+        <div class="flex flex-col">
+          <span class="font-headline-sm text-[14px]" data-translate="analysisHistory">Analysis History</span>
+        </div>
+      </a>
+    </nav>
+    <div class="mt-auto border-t border-outline-variant/10 pt-6 grid grid-cols-3 gap-2">
+      <button class="flex flex-col items-center justify-center py-3 rounded-xl hover:bg-surface-container-high dark:hover:bg-white/5 text-on-surface-variant transition-all group" onclick="document.documentElement.classList.toggle('dark')">
+        <span class="material-symbols-outlined text-xl group-hover:text-primary transition-colors" data-icon="dark_mode">dark_mode</span>
+        <span class="text-[10px] mt-1.5 font-bold uppercase tracking-tighter opacity-70" data-translate="theme">Theme</span>
+      </button>
+      <button class="flex flex-col items-center justify-center py-3 rounded-xl hover:bg-surface-container-high dark:hover:bg-white/5 text-on-surface-variant transition-all group">
+        <span class="material-symbols-outlined text-xl group-hover:text-primary transition-colors" data-icon="language">language</span>
+        <span class="text-[10px] mt-1.5 font-bold uppercase tracking-tighter opacity-70" data-translate="language">Language</span>
+      </button>
+      <button class="flex flex-col items-center justify-center py-3 rounded-xl hover:bg-surface-container-high dark:hover:bg-white/5 text-on-surface-variant transition-all group">
+        <span class="material-symbols-outlined text-xl group-hover:text-primary transition-colors" data-icon="help">help</span>
+        <span class="text-[10px] mt-1.5 font-bold uppercase tracking-tighter opacity-70" data-translate="help">Help</span>
+      </button>
+    </div>
+  </aside>
+  <!-- rest of page copied as-is to keep structure -->
+  <main class="ml-[280px] h-screen flex flex-col bg-background/50 dark:bg-background/95 transition-all duration-300" id="mainContent">
+    <header class="h-[72px] border-b border-outline-variant/10 flex items-center justify-end px-margin-desktop bg-surface/30 dark:bg-surface-dim/30 backdrop-blur-xl sticky top-0 z-40 transition-colors duration-300">
+      <div class="flex items-center gap-6"></div>
+    </header>
+    <div class="flex-1 p-margin-desktop overflow-y-auto space-y-gutter flex flex-col">
+      <!-- Top Grid: Upload & Result Preview -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-gutter shrink-0">
+        <!-- Upload Panel -->
+        <section class="glass-panel rounded-2xl p-panel-padding flex flex-col min-h-[400px] transition-all">
+          <div class="flex items-center justify-between mb-6">
+            <div>
+              <h3 class="font-headline-md text-on-surface" data-translate="uploadImage">Upload Image</h3>
+            </div>
+            <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+              <span class="material-symbols-outlined text-xl" data-icon="cloud_upload">cloud_upload</span>
+            </div>
+          </div>
+          <div class="flex-1 upload-dashed rounded-2xl flex flex-col items-center justify-center p-6 cursor-pointer hover:bg-primary/[0.03] dark:hover:bg-primary/[0.03] transition-colors group">
+            <div class="w-14 h-14 rounded-full bg-surface-container-high/50 dark:bg-surface-container-high flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+              <span class="material-symbols-outlined text-4xl text-outline group-hover:text-primary transition-colors" data-icon="add">add</span>
+            </div>
+            <p class="font-headline-sm text-on-surface text-base" data-translate="clickOrDrag">Click or drag image here</p>
+            <p class="text-xs text-outline mt-1 opacity-60" data-translate="fileTypes">JPG, PNG, DICOM (Max 20MB)</p>
+            <div class="mt-6 flex gap-2">
+              <span class="px-2.5 py-1 rounded-full bg-surface-container-high/50 text-[10px] font-bold text-outline uppercase tracking-wider">JPG</span>
+              <span class="px-2.5 py-1 rounded-full bg-surface-container-high/50 text-[10px] font-bold text-outline uppercase tracking-wider">PNG</span>
+              <span class="px-2.5 py-1 rounded-full bg-surface-container-high/50 text-[10px] font-bold text-outline uppercase tracking-wider">DICOM</span>
+            </div>
+          </div>
+        </section>
+        <!-- Result Preview Panel -->
+        <section class="glass-panel rounded-2xl p-panel-padding flex flex-col min-h-[400px] transition-all">
+          <div class="flex items-center justify-between mb-6">
+            <div>
+              <h3 class="font-headline-md text-on-surface" data-translate="resultPreview">Result Preview</h3>
+            </div>
+            <div class="w-10 h-10 rounded-xl bg-surface-container-high/30 flex items-center justify-center text-outline">
+              <span class="material-symbols-outlined text-xl" data-icon="visibility">visibility</span>
+            </div>
+          </div>
+          <div class="flex-1 bg-surface-container-lowest/30 dark:bg-surface-container-lowest/50 rounded-2xl border border-outline-variant/5 flex items-center justify-center relative overflow-hidden">
+            <div class="text-center opacity-10 flex flex-col items-center">
+              <span class="material-symbols-outlined text-8xl" data-icon="clinical_notes">clinical_notes</span>
+              <p class="mt-4 font-bold uppercase tracking-[0.25em] text-xs" data-translate="waitingForAnalysis">Waiting for analysis</p>
+            </div>
+          </div>
+        </section>
+      </div>
+      <section class="glass-panel rounded-2xl p-5 border-l-[6px] border-primary shadow-lg transition-all hover:shadow-xl shrink-0">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-5">
+            <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+              <span class="material-symbols-outlined text-2xl">description</span>
+            </div>
+            <div>
+              <h4 class="font-headline-sm text-on-surface text-base" data-translate="analysisResult">Analysis Result</h4>
+            </div>
+          </div>
+          <div class="flex gap-3">
+            <button class="w-10 h-10 rounded-xl border border-outline-variant/20 hover:bg-primary/10 hover:border-primary/40 text-on-surface-variant hover:text-primary transition-all flex items-center justify-center group">
+              <span class="material-symbols-outlined text-xl" data-icon="download">download</span>
+            </button>
+            <button class="w-10 h-10 rounded-xl border border-outline-variant/20 hover:bg-primary/10 hover:border-primary/40 text-on-surface-variant hover:text-primary transition-all flex items-center justify-center group">
+              <span class="material-symbols-outlined text-xl" data-icon="print">print</span>
+            </button>
+          </div>
+        </div>
+      </section>
+      <section class="glass-panel rounded-2xl p-panel-padding flex flex-col flex-1 transition-all">
+        <div class="flex items-center justify-between mb-8">
+          <div>
+            <h3 class="font-headline-md text-on-surface" data-translate="reportsAndExplanations">Reports and Explanations</h3>
+          </div>
+        </div>
+        <div class="flex-1 flex flex-col items-center justify-center py-8">
+          <div class="w-full max-w-3xl space-y-8 opacity-[0.05]">
+            <div class="h-5 w-1/3 bg-on-surface rounded-full"></div>
+            <div class="space-y-4">
+              <div class="h-3.5 w-full bg-on-surface rounded-full"></div>
+              <div class="h-3.5 w-5/6 bg-on-surface rounded-full"></div>
+              <div class="h-3.5 w-4/6 bg-on-surface rounded-full"></div>
+              <div class="h-3.5 w-full bg-on-surface rounded-full"></div>
+              <div class="h-3.5 w-11/12 bg-on-surface rounded-full"></div>
+            </div>
+            <div class="h-5 w-1/4 bg-on-surface rounded-full"></div>
+            <div class="space-y-4">
+              <div class="h-3.5 w-full bg-on-surface rounded-full"></div>
+              <div class="h-3.5 w-full bg-on-surface rounded-full"></div>
+              <div class="h-3.5 w-1/2 bg-on-surface rounded-full"></div>
+              <div class="h-3.5 w-3/4 bg-on-surface rounded-full"></div>
+            </div>
+          </div>
+          <div class="mt-12 flex flex-col items-center opacity-20 select-none">
+            <span class="material-symbols-outlined text-7xl text-outline mb-4" data-icon="description">description</span>
+            <p class="font-bold uppercase tracking-[0.35em] text-[11px] text-on-surface" data-translate="analysisDetailsPopulate">Analysis details will populate here</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>

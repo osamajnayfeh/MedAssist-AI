@@ -8,19 +8,16 @@ ClinicalMind is an AI-powered healthcare platform designed to analyze:
 * patient symptoms
 * clinical records
 
-using Artificial Intelligence and modern healthcare SaaS architecture.
+using Artificial Intelligence and simple modern web technologies.
 
 The system is built using:
 
-* Next.js
-* React
-* TypeScript
-* FastAPI
-* PyTorch
-* PostgreSQL
-* Docker
+* HTML
+* CSS
+* JavaScript
+* Python
 
-The goal of the project is to create a scalable enterprise-level medical AI platform.
+The goal of the project is to create a simple and understandable medical AI platform for learning and future development.
 
 ---
 
@@ -28,182 +25,116 @@ The goal of the project is to create a scalable enterprise-level medical AI plat
 
 This architecture was chosen because:
 
-* scalable
-* maintainable
-* modular
-* production-ready
-* AI-friendly
-* suitable for future microservices
-* suitable for healthcare systems
+* beginner-friendly
+* easy to understand
+* easy to maintain
+* lightweight
+* fast to build
+* perfect for learning AI projects
+* suitable for solo developers
 
-Instead of putting everything in one place, every responsibility is separated into modules.
+Instead of using complex enterprise frameworks,
+the project focuses on simplicity and clarity.
 
 This prevents:
 
-* spaghetti code
-* duplicated logic
-* huge unmaintainable files
+* framework confusion
 * difficult debugging
+* dependency problems
+* over-engineering
+* huge complicated setups
 
 ---
 
 # Root Project Structure
 
-```bash id="tx5n8m"
+```bash
 ClinicalMind/
 │
-├── frontend/
-├── backend/
-├── ml_models/
-├── datasets/
-├── docker/
-├── docs/
-├── scripts/
-├── tests/
+├── index.html
+├── dashboard.html
+├── upload.html
+├── results.html
+├── history.html
+├── login.html
+├── register.html
+├── about.html
 │
-├── .gitignore
+├── assets/
+│   ├── css/
+│   ├── js/
+│   ├── images/
+│   └── icons/
+│
+├── components/
+│
+├── data/
+│
+├── ai/
+│
+├── uploads/
+│
+├── docs/
+│
 ├── README.md
-└── docker-compose.yml
+└── .gitignore
 ```
 
 ---
 
-# FRONTEND
+# MAIN HTML PAGES
 
-```bash id="h2v7pq"
-frontend/
-```
+The project uses separate HTML pages instead of React or Next.js.
 
-Contains the entire user interface.
-
-Built using:
-
-* Next.js
-* React
-* TypeScript
-* TailwindCSS
-
-The frontend handles:
-
-* dashboards
-* uploads
-* authentication
-* AI results
-* patient history
-* admin system
+Each page has a clear responsibility.
 
 ---
 
-# frontend/app/
+# index.html
 
-```bash id="d9q3xt"
-frontend/app/
-```
-
-Main Next.js App Router folder.
-
-Contains all application pages.
-
----
-
-# layout.tsx
-
-```bash id="r5m1zk"
-frontend/app/layout.tsx
-```
-
-Main application layout.
-
-Contains:
-
-* sidebar
-* navbar
-* RTL support
-* app wrapper
-* global layout system
-
-Why?
-Because every page should share the same structure.
-
----
-
-# globals.css
-
-```bash id="t3x8vl"
-frontend/app/globals.css
-```
-
-Global styling file.
-
-Contains:
-
-* dark theme colors
-* typography
-* RTL settings
-* animations
-* reusable CSS variables
-
----
-
-# page.tsx
-
-```bash id="y7m2pk"
-frontend/app/page.tsx
-```
-
-Landing page of ClinicalMind.
+Main landing page of ClinicalMind.
 
 Contains:
 
 * hero section
 * navigation
+* project overview
+* AI explanation
 * CTA buttons
-* branding
 
 ---
 
-# dashboard/
-
-```bash id="g4v9xm"
-frontend/app/dashboard/
-```
+# dashboard.html
 
 Main medical dashboard.
 
 Contains:
 
-* analytics
 * statistics
-* recent scans
+* recent analyses
+* user information
 * AI activity
 
 ---
 
-# upload/
+# upload.html
 
-```bash id="k2x7zb"
-frontend/app/upload/
-```
-
-Medical image upload system.
+Medical image upload page.
 
 Contains:
 
-* DICOM upload
+* upload form
 * image preview
 * upload validation
-* upload UI
+* analyze button
 
 Why separate?
-Because upload logic becomes huge later.
+
+Because upload systems become large later.
 
 ---
 
-# results/
-
-```bash id="n8q1tv"
-frontend/app/results/
-```
+# results.html
 
 AI diagnosis result page.
 
@@ -211,17 +142,12 @@ Contains:
 
 * prediction result
 * confidence score
-* severity
-* AI explanation
 * recommendations
+* analysis summary
 
 ---
 
-# history/
-
-```bash id="j1m6xr"
-frontend/app/history/
-```
+# history.html
 
 Stores previous analyses.
 
@@ -234,435 +160,363 @@ Contains:
 
 ---
 
-# auth/
+# login.html
 
-```bash id="p5x9zk"
-frontend/app/auth/
+Login page.
+
+Contains:
+
+* email input
+* password input
+* login validation
+
+---
+
+# register.html
+
+Account creation page.
+
+Contains:
+
+* registration form
+* user information
+* validation system
+
+---
+
+# about.html
+
+Project information page.
+
+Contains:
+
+* project details
+* AI explanation
+* team information
+* healthcare vision
+
+---
+
+# ASSETS
+
+```bash
+assets/
 ```
 
-Authentication pages.
+Contains all frontend resources.
+
+---
+
+# assets/css/
+
+Contains all styling files.
+
+---
+
+# style.css
+
+Global styling file.
+
+Contains:
+
+* colors
+* typography
+* RTL support
+* responsive design
+* animations
+* reusable styles
+
+---
+
+# dashboard.css
+
+Dashboard-specific styling.
+
+---
+
+# upload.css
+
+Upload page styling.
+
+---
+
+# auth.css
+
+Authentication page styling.
+
+---
+
+# results.css
+
+Results page styling.
+
+---
+
+# assets/js/
+
+Contains all JavaScript logic.
+
+---
+
+# main.js
+
+Global JavaScript file.
+
+Contains:
+
+* navbar logic
+* dark mode
+* animations
+* reusable functions
+
+---
+
+# dashboard.js
+
+Dashboard functionality.
+
+Contains:
+
+* charts
+* statistics
+* activity updates
+
+---
+
+# upload.js
+
+Upload system logic.
+
+Contains:
+
+* image preview
+* validation
+* upload handling
+
+---
+
+# results.js
+
+Results page logic.
+
+Contains:
+
+* AI result display
+* confidence calculations
+* report rendering
+
+---
+
+# auth.js
+
+Authentication logic.
 
 Contains:
 
 * login
 * register
-* forgot password later
+* validation
+* local storage handling
 
 ---
 
-# admin/
+# api.js
 
-```bash id="v3m8tx"
-frontend/app/admin/
-```
+Future backend communication.
 
-Admin dashboard.
+Used later for:
+
+* Python AI connection
+* sending data
+* fetching predictions
+
+---
+
+# assets/images/
 
 Contains:
 
-* AI monitoring
-* server health
-* patient management
-* analytics
+* medical images
+* backgrounds
+* illustrations
+* project graphics
+
+---
+
+# assets/icons/
+
+Contains:
+
+* SVG icons
+* UI icons
+* dashboard icons
 
 ---
 
 # COMPONENTS
 
-```bash id="b8q2zl"
-frontend/components/
+```bash
+components/
 ```
 
-Reusable UI components.
+Reusable HTML components.
 
-This is one of the most important folders.
+Contains:
+
+* navbar.html
+* sidebar.html
+* footer.html
+* loader.html
 
 Why?
-Because instead of rewriting UI multiple times,
-we create reusable components.
+
+Because reusable components reduce duplicated code.
 
 ---
 
-# components/ui/
+# DATA
 
-Contains:
-
-* Button
-* Input
-* Card
-* Badge
-* Modal
-* Loader
-
-Reusable across entire project.
-
----
-
-# components/layout/
-
-Contains:
-
-* Sidebar
-* Topbar
-* Navigation
-* Layout wrappers
-
----
-
-# components/dashboard/
-
-Contains dashboard-specific components.
-
-Example:
-
-* StatisticsCard
-* ActivityCard
-
----
-
-# components/upload/
-
-Contains upload-specific components.
-
-Example:
-
-* UploadDropzone
-* UploadPreview
-
----
-
-# SERVICES
-
-```bash id="c6x4vp"
-frontend/services/
+```bash
+data/
 ```
 
-Handles frontend API communication.
+Simple local data storage.
 
 Contains:
 
-* API calls
-* request handling
-* backend endpoints
+* users.json
+* reports.json
+* history.json
+
+Why use JSON?
+
+Because it is easier than PostgreSQL for beginners.
 
 ---
 
-# api.ts
+# AI
 
-Main API configuration.
-
-Contains:
-
-* base URL
-* headers
-* interceptors
-
----
-
-# auth.ts
-
-Authentication requests.
-
-Contains:
-
-* login
-* register
-* token handling
-
----
-
-# results.ts
-
-AI result requests.
-
-Contains:
-
-* fetch predictions
-* fetch reports
-
----
-
-# STORE
-
-```bash id="u7v1mk"
-frontend/store/
+```bash
+ai/
 ```
 
-Frontend state management.
-
-Why?
-Because data should not be passed manually between every component.
-
-Contains:
-
-* auth state
-* dashboard state
-* upload state
-* analysis state
-
----
-
-# BACKEND
-
-```bash id="m4q8zt"
-backend/
-```
-
-Main server and AI backend.
+Contains AI systems and Python scripts.
 
 Built using:
 
-* FastAPI
 * Python
 
-Handles:
+---
 
-* APIs
-* AI inference
-* authentication
-* database
-* business logic
+# model.py
+
+Loads AI models.
 
 ---
 
-# backend/app/
+# preprocess.py
 
-Main backend application.
-
----
-
-# api/
-
-Contains all API routes.
-
-Example:
-
-* auth routes
-* upload routes
-* prediction routes
+Handles image preprocessing.
 
 ---
 
-# ai/
+# predict.py
 
-Contains AI systems.
-
-Example:
-
-* image analysis
-* symptom analysis
-* preprocessing
-* inference pipeline
-
----
-
-# models/
-
-Database models.
-
-Contains:
-
-* User model
-* Prediction model
-* Patient model
-
----
-
-# schemas/
-
-Pydantic schemas.
-
-Used for:
-
-* request validation
-* API responses
-
-Why important?
-Because FastAPI depends heavily on schemas.
-
----
-
-# services/
-
-Business logic layer.
-
-Separates logic from routes.
-
-Why?
-To keep APIs clean.
-
----
-
-# database/
-
-Database configuration.
-
-Contains:
-
-* PostgreSQL connection
-* migrations
-* repositories
-
----
-
-# middleware/
-
-Contains:
-
-* auth middleware
-* logging
-* rate limiting
-
----
-
-# workers/
-
-Background tasks.
-
-Later used for:
-
-* AI processing
-* report generation
-* heavy tasks
-
-Usually connected with:
-
-* Celery
-* Redis
-
----
-
-# ML MODELS
-
-```bash id="s8x3qm"
-ml_models/
-```
-
-Stores trained AI models.
-
-Example:
-
-* chest xray models
-* MRI models
-* skin disease models
+Runs AI predictions.
 
 ---
 
 # datasets/
 
-Contains AI datasets.
+Contains training datasets.
 
 Used for:
 
 * training
-* validation
 * testing
+* validation
+
+---
+
+# uploads/
+
+Contains uploaded medical files and images.
 
 ---
 
 # docs/
 
-Project documentation.
+Project documentation folder.
 
 Contains:
 
-* architecture docs
-* API docs
-* deployment docs
-
----
-
-# docker/
-
-Docker infrastructure.
-
-Contains:
-
-* frontend container
-* backend container
-* nginx config
-
-Why Docker?
-Because it makes deployment identical everywhere.
-
----
-
-# tests/
-
-Contains all testing systems.
-
-Types:
-
-* frontend tests
-* backend tests
-* integration tests
-* AI tests
-
----
-
-# scripts/
-
-Automation scripts.
-
-Example:
-
-* deployment scripts
-* training scripts
-* setup scripts
+* architecture documentation
+* setup guides
+* AI notes
 
 ---
 
 # COMMON PROBLEMS
 
-# 1. Code Not Colored
+# 1. JavaScript Not Working
 
 Reason:
-Dependencies are not installed.
+
+Wrong script path.
 
 Solution:
 
-```bash id="m2x7vl"
-npm install
+Check:
+
+```html
+<script src="assets/js/main.js"></script>
 ```
 
 ---
 
-# 2. TailwindCSS Not Working
+# 2. CSS Not Applied
 
 Reason:
-Tailwind not configured correctly.
+
+Wrong CSS file path.
 
 Solution:
 
-* install tailwind
-* check tailwind.config.js
-* restart VS Code
+Check:
 
----
-
-# 3. Imports Have Red Errors
-
-Reason:
-Node modules missing.
-
-Solution:
-
-```bash id="p4v8zk"
-npm install
+```html
+<link rel="stylesheet" href="assets/css/style.css">
 ```
 
 ---
 
-# 4. React Not Recognized
+# 3. Images Not Showing
 
 Reason:
-React packages not installed.
+
+Wrong image path.
 
 Solution:
 
-```bash id="f7m1qx"
-npm install react react-dom next
+Place images inside:
+
+```bash
+assets/images/
 ```
+
+---
+
+# 4. Python Script Not Running
+
+Reason:
+
+Python not installed.
+
+Solution:
+
+Install Python from:
+
+https://www.python.org/
 
 ---
 
@@ -670,100 +524,76 @@ npm install react react-dom next
 
 # Step 1
 
-Install Node.js:
-
-[Node.js Official Website](https://nodejs.org/?utm_source=chatgpt.com)
-
 Install:
 
-* LTS version
+* VS Code
+* Live Server Extension
+* Python
 
 ---
 
 # Step 2
 
-Open terminal:
-
-```bash id="w8q3tm"
-cd frontend
-```
+Open project folder in VS Code.
 
 ---
 
 # Step 3
 
-Install dependencies:
+Run Live Server.
 
-```bash id="k5m7zp"
-npm install
+Or open:
+
+```bash
+index.html
 ```
+
+directly in browser.
 
 ---
 
 # Step 4
 
-Run frontend:
+Run Python AI scripts later using:
 
-```bash id="x9v2ql"
-npm run dev
+```bash
+python predict.py
 ```
 
 ---
 
-# Step 5
-
-Open browser:
-
-```bash id="g1x6pk"
-http://localhost:3000
-```
-
----
-
-# Why We Use Next.js?
+# Why We Use HTML CSS JavaScript?
 
 Because:
 
-* scalable
-* modern
-* fast
-* React-based
-* production-ready
-* supports App Router
-* ideal for SaaS systems
+* simple
+* beginner-friendly
+* easy to debug
+* easy to learn
+* lightweight
+* no complicated setup
 
 ---
 
-# Why We Use FastAPI?
+# Why We Use Python?
 
 Because:
 
-* very fast
 * excellent for AI
-* async support
-* easy integration with PyTorch
+* easy syntax
+* huge AI ecosystem
+* beginner-friendly
 
 ---
 
-# Why We Use PostgreSQL?
+# Why We Use JSON Instead of PostgreSQL?
 
 Because:
 
-* reliable
-* scalable
-* enterprise-grade
-* perfect for healthcare systems
-
----
-
-# Why We Use Docker?
-
-Because:
-
-* same environment everywhere
-* easier deployment
-* easier scaling
-* avoids dependency conflicts
+* simpler
+* easier to understand
+* no database setup
+* perfect for learning projects
 
 ---
 
@@ -772,23 +602,19 @@ Because:
 Completed:
 
 * frontend structure
-* dashboard UI
+* dashboard design
 * upload UI
-* auth UI
+* authentication pages
 * results page
-* history page
-* admin system foundation
-* reusable components architecture
+* reusable components
 
 Not completed yet:
 
-* backend APIs
-* AI integration
-* database integration
-* authentication logic
-* real uploads
+* real AI integration
+* real authentication
+* database system
 * deployment
-* AI training
+* AI model training
 
 ---
 
@@ -796,8 +622,8 @@ Not completed yet:
 
 ClinicalMind aims to become:
 
-* AI healthcare SaaS platform
+* AI healthcare platform
 * medical image analysis system
 * clinical assistant
-* scalable enterprise healthcare architecture
-* production-level AI medical platform
+* beginner-friendly AI project
+* future scalable healthcare system

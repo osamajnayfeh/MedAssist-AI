@@ -1,2 +1,0 @@
-// History Page
-export default function HistoryPage() { return null; }

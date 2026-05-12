@@ -1,4 +1,0 @@
-**/node_modules
-.next
-.env
-frontend/next-dev*.log

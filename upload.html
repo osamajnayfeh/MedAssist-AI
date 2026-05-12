@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ClinicalMind | Upload</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/upload.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav container">
+      <a class="brand" href="index.html">ClinicalMind</a>
+      <div class="nav-links">
+        <a href="dashboard.html" data-nav="dashboard">Dashboard</a>
+        <a href="upload.html" data-nav="upload">Upload</a>
+        <a href="results.html" data-nav="results">Results</a>
+        <a href="history.html" data-nav="history">History</a>
+      </div>
+      <button id="theme-toggle" class="btn ghost" type="button">Theme</button>
+    </nav>
+  </header>
+
+  <main class="container page-shell">
+    <section class="panel">
+      <h1>Upload Scan</h1>
+      <p>Upload form placeholder with preview and validation handled in upload.js.</p>
+      <form id="upload-form" class="stack">
+        <label for="scan-file">Medical image</label>
+        <input id="scan-file" name="scan-file" type="file" accept="image/*">
+        <button class="btn" type="submit">Run Mock Analysis</button>
+      </form>
+      <img id="preview" class="preview" alt="Selected scan preview">
+    </section>
+  </main>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/upload.js"></script>
+</body>
+</html>

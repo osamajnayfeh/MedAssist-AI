@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html class="dark" lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>ClinicalMind | Symptom Analysis</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cairo:wght@400;500;600;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#005236",
+                        "tertiary-container": "#007d55",
+                        "surface-dim": "#11131b",
+                        "outline-variant": "#434655",
+                        "error": "#ffb4ab",
+                        "on-primary": "#002a78",
+                        "primary-container": "#2563eb",
+                        "surface-container-lowest": "#0c0e16",
+                        "outline": "#8d90a0",
+                        "tertiary-fixed": "#6ffbbe",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "on-surface": "#e1e2ed",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "on-primary-fixed": "#00174b",
+                        "primary": "#b4c5ff",
+                        "surface-tint": "#b4c5ff",
+                        "surface-container-high": "#282a32",
+                        "secondary-fixed-dim": "#bdc7d9",
+                        "on-surface-variant": "#c3c6d7",
+                        "on-error-container": "#ffdad6",
+                        "tertiary": "#4edea3",
+                        "surface-variant": "#32343d",
+                        "on-secondary": "#27313f",
+                        "secondary-fixed": "#d9e3f6",
+                        "surface-bright": "#373942",
+                        "on-secondary-fixed": "#121c2a",
+                        "background": "#11131b",
+                        "on-background": "#e1e2ed",
+                        "surface-container-low": "#191b23",
+                        "inverse-primary": "#0053db",
+                        "error-container": "#93000a",
+                        "on-secondary-fixed-variant": "#3d4756",
+                        "secondary-container": "#404a59",
+                        "inverse-on-surface": "#2e3039",
+                        "on-error": "#690005",
+                        "primary-fixed": "#dbe1ff",
+                        "on-tertiary-fixed": "#002113",
+                        "on-secondary-container": "#afb9cb",
+                        "secondary": "#bdc7d9",
+                        "surface-container": "#1d1f27",
+                        "inverse-surface": "#e1e2ed",
+                        "surface": "#11131b",
+                        "on-tertiary-container": "#bdffdb",
+                        "on-primary-container": "#eeefff",
+                        "surface-container-highest": "#32343d",
+                        "on-tertiary": "#003824",
+                        "primary-fixed-dim": "#b4c5ff"
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(25, 27, 35, 0.4);
+            -webkit-backdrop-filter: blur(24px);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .light .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(141, 144, 160, 0.2);
+            border-radius: 10px;
+        }
+        .pulse-animation {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: .5; }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background overflow-hidden transition-colors duration-300">
+    <!-- Sidebar Navigation -->
+    <aside class="fixed h-full w-[280px] left-0 top-0 border-r border-outline-variant/10 bg-surface-container-lowest dark:bg-surface-dim/95 backdrop-blur-2xl flex flex-col py-8 px-6 z-50">
+        <div class="mb-12">
+            <h1 class="text-2xl font-bold text-on-surface tracking-tight">ClinicalMind</h1>
+            <p class="text-[11px] text-primary dark:text-primary-fixed-dim uppercase font-bold tracking-[0.2em] mt-1.5 opacity-90">AI Medical Intelligence</p>
+        </div>
+        <nav class="flex-1 space-y-2 overflow-y-auto pr-2 custom-scrollbar">
+            <a href="dashboard.html" class="text-on-surface-variant/70 hover:text-on-surface hover:bg-surface-container-high dark:hover:bg-white/5 rounded-xl flex items-center gap-3.5 px-4 py-4 transition-all duration-200 cursor-pointer">
+                <span class="material-symbols-outlined text-[24px]">arrow_back</span>
+                <span class="text-[14px]">Back to Dashboard</span>
+            </a>
+        </nav>
+        <div class="mt-auto border-t border-outline-variant/10 pt-6 grid grid-cols-3 gap-2">
+            <button class="flex flex-col items-center justify-center py-3 rounded-xl hover:bg-surface-container-high dark:hover:bg-white/5 text-on-surface-variant transition-all group" onclick="document.documentElement.classList.toggle('dark')">
+                <span class="material-symbols-outlined text-xl group-hover:text-primary transition-colors">dark_mode</span>
+                <span class="text-[10px] mt-1.5 font-bold uppercase tracking-tighter opacity-70">Theme</span>
+            </button>
+            <button class="flex flex-col items-center justify-center py-3 rounded-xl hover:bg-surface-container-high dark:hover:bg-white/5 text-on-surface-variant transition-all group">
+                <span class="material-symbols-outlined text-xl group-hover:text-primary transition-colors">language</span>
+                <span class="text-[10px] mt-1.5 font-bold uppercase tracking-tighter opacity-70">Language</span>
+            </button>
+            <button class="flex flex-col items-center justify-center py-3 rounded-xl hover:bg-surface-container-high dark:hover:bg-white/5 text-on-surface-variant transition-all group">
+                <span class="material-symbols-outlined text-xl group-hover:text-primary transition-colors">help</span>
+                <span class="text-[10px] mt-1.5 font-bold uppercase tracking-tighter opacity-70">Help</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="ml-[280px] h-screen flex flex-col bg-background/50 dark:bg-background/95">
+        <!-- Top App Bar -->
+        <header class="h-[72px] border-b border-outline-variant/10 flex items-center justify-between px-6 bg-surface/30 dark:bg-surface-dim/30 backdrop-blur-xl sticky top-0 z-40">
+            <h2 class="text-xl font-semibold text-on-surface">Symptom Analysis</h2>
+        </header>
+
+        <!-- Dashboard Canvas -->
+        <div class="flex-1 p-6 overflow-y-auto space-y-4 flex flex-col">
+            <!-- Input & Results Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                <!-- Symptom Input Panel -->
+                <section class="glass-panel rounded-2xl p-6 flex flex-col min-h-[500px]">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-lg font-semibold text-on-surface">Enter Symptoms</h3>
+                        <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+                            <span class="material-symbols-outlined text-xl">medical_information</span>
+                        </div>
+                    </div>
+                    
+                    <div class="flex-1 flex flex-col">
+                        <textarea 
+                            id="symptomsInput" 
+                            class="flex-1 w-full p-4 rounded-xl bg-surface-container-low border border-outline-variant/20 text-on-surface placeholder-outline focus:outline-none focus:ring-2 focus:ring-primary/50 resize-none transition-all"
+                            placeholder="Describe your symptoms in detail...&#10;&#10;Example:&#10;- Persistent headache for 3 days&#10;- Fever (38.5°C)&#10;- Fatigue and body aches&#10;- Difficulty sleeping"
+                            rows="12"
+                        ></textarea>
+                        
+                        <div class="mt-4 flex items-center gap-2 text-xs text-outline">
+                            <span class="material-symbols-outlined text-sm">info</span>
+                            <span>Be as specific as possible for accurate analysis</span>
+                        </div>
+                    </div>
+
+                    <button 
+                        id="analyzeBtn" 
+                        onclick="analyzeSymptoms()" 
+                        class="mt-6 w-full py-3 rounded-xl bg-primary text-on-primary font-bold transition-all hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2"
+                    >
+                        <span class="material-symbols-outlined">psychology</span>
+                        <span>Analyze Symptoms</span>
+                    </button>
+                </section>
+
+                <!-- Results Panel -->
+                <section class="glass-panel rounded-2xl p-6 flex flex-col min-h-[500px]">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-lg font-semibold text-on-surface">AI Analysis</h3>
+                        <div class="w-10 h-10 rounded-xl bg-surface-container-high/30 flex items-center justify-center text-outline">
+                            <span class="material-symbols-outlined text-xl">analytics</span>
+                        </div>
+                    </div>
+                    
+                    <div id="resultsContainer" class="flex-1 flex flex-col items-center justify-center">
+                        <div class="text-center opacity-20 select-none">
+                            <span class="material-symbols-outlined text-7xl text-outline mb-4">pending</span>
+                            <p class="font-bold uppercase tracking-[0.35em] text-[11px] text-on-surface">Waiting for analysis</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Detailed Results Section (Hidden by default) -->
+            <section id="detailedResults" class="glass-panel rounded-2xl p-6 hidden">
+                <h3 class="text-lg font-semibold text-on-surface mb-6">Detailed Analysis</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- Causes Card -->
+                    <div class="bg-surface-container-low/50 rounded-xl p-5 border border-outline-variant/10">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-lg bg-error/10 flex items-center justify-center">
+                                <span class="material-symbols-outlined text-error">coronavirus</span>
+                            </div>
+                            <h4 class="font-semibold text-on-surface">Possible Causes</h4>
+                        </div>
+                        <ul id="causesList" class="space-y-2 text-on-surface-variant text-sm">
+                            <!-- Populated by JavaScript -->
+                        </ul>
+                    </div>
+
+                    <!-- Treatments Card -->
+                    <div class="bg-surface-container-low/50 rounded-xl p-5 border border-outline-variant/10">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-lg bg-tertiary/10 flex items-center justify-center">
+                                <span class="material-symbols-outlined text-tertiary">medication</span>
+                            </div>
+                            <h4 class="font-semibold text-on-surface">Recommended Treatments</h4>
+                        </div>
+                        <ul id="treatmentsList" class="space-y-2 text-on-surface-variant text-sm">
+                            <!-- Populated by JavaScript -->
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Disclaimer -->
+                <div class="mt-6 p-4 rounded-xl bg-error/5 border border-error/20 flex gap-3">
+                    <span class="material-symbols-outlined text-error text-xl">warning</span>
+                    <div class="flex-1 text-sm text-on-surface-variant">
+                        <p class="font-semibold text-error mb-1">Medical Disclaimer</p>
+                        <p>This AI analysis is for informational purposes only and should not replace professional medical advice. Please consult with a qualified healthcare provider for proper diagnosis and treatment.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        const API_URL = 'http://localhost:8000';
+
+        async function analyzeSymptoms() {
+            const symptomsInput = document.getElementById('symptomsInput');
+            const symptoms = symptomsInput.value.trim();
+            
+            if (!symptoms || symptoms.length < 10) {
+                showError('Please enter detailed symptoms (at least 10 characters)');
+                return;
+            }
+
+            const analyzeBtn = document.getElementById('analyzeBtn');
+            const resultsContainer = document.getElementById('resultsContainer');
+            const detailedResults = document.getElementById('detailedResults');
+
+            // Show loading state
+            analyzeBtn.disabled = true;
+            analyzeBtn.innerHTML = `
+                <span class="material-symbols-outlined pulse-animation">hourglass_empty</span>
+                <span>Analyzing...</span>
+            `;
+
+            resultsContainer.innerHTML = `
+                <div class="text-center">
+                    <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4 mx-auto pulse-animation">
+                        <span class="material-symbols-outlined text-4xl text-primary">psychology</span>
+                    </div>
+                    <p class="text-on-surface font-semibold">AI is analyzing your symptoms...</p>
+                    <p class="text-outline text-sm mt-2">This may take a few moments</p>
+                </div>
+            `;
+
+            try {
+                // Call FastAPI backend
+                const response = await fetch(`${API_URL}/analyze-symptoms`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        symptoms: symptoms,
+                        language: 'en'
+                    })
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.detail || 'Analysis failed');
+                }
+
+                const data = await response.json();
+                displayResults(data);
+                detailedResults.classList.remove('hidden');
+
+            } catch (error) {
+                console.error('Error:', error);
+                showError(error.message || 'Failed to analyze symptoms. Please check if the backend server is running.');
+            } finally {
+                // Reset button
+                analyzeBtn.disabled = false;
+                analyzeBtn.innerHTML = `
+                    <span class="material-symbols-outlined">psychology</span>
+                    <span>Analyze Symptoms</span>
+                `;
+            }
+        }
+
+        function displayResults(data) {
+            const resultsContainer = document.getElementById('resultsContainer');
+            
+            // Determine severity color
+            const severityColors = {
+                'Mild': 'tertiary',
+                'Moderate': 'primary',
+                'Severe': 'error',
+                'Critical': 'error'
+            };
+            const severityColor = severityColors[data.severity] || 'primary';
+
+            resultsContainer.innerHTML = `
+                <div class="w-full space-y-4">
+                    <!-- Disease Name -->
+                    <div class="bg-surface-container-low/50 rounded-xl p-5 border border-outline-variant/10">
+                        <div class="flex items-center gap-3 mb-2">
+                            <span class="material-symbols-outlined text-primary">diagnosis</span>
+                            <h4 class="text-sm font-semibold text-outline uppercase tracking-wider">Diagnosis</h4>
+                        </div>
+                        <p class="text-2xl font-bold text-on-surface">${data.disease_name}</p>
+                    </div>
+
+                    <!-- Severity -->
+                    <div class="bg-surface-container-low/50 rounded-xl p-5 border border-outline-variant/10">
+                        <div class="flex items-center gap-3 mb-2">
+                            <span class="material-symbols-outlined text-${severityColor}">emergency</span>
+                            <h4 class="text-sm font-semibold text-outline uppercase tracking-wider">Severity Level</h4>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="px-4 py-2 rounded-full bg-${severityColor}/20 text-${severityColor} font-bold text-lg">${data.severity}</span>
+                        </div>
+                    </div>
+
+                    <!-- Quick Stats -->
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="bg-surface-container-low/50 rounded-xl p-4 border border-outline-variant/10 text-center">
+                            <p class="text-2xl font-bold text-error">${data.causes.length}</p>
+                            <p class="text-xs text-outline uppercase tracking-wider mt-1">Possible Causes</p>
+                        </div>
+                        <div class="bg-surface-container-low/50 rounded-xl p-4 border border-outline-variant/10 text-center">
+                            <p class="text-2xl font-bold text-tertiary">${data.treatments.length}</p>
+                            <p class="text-xs text-outline uppercase tracking-wider mt-1">Treatments</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // Populate causes list
+            const causesList = document.getElementById('causesList');
+            causesList.innerHTML = data.causes.map(cause => `
+                <li class="flex gap-2">
+                    <span class="text-error">•</span>
+                    <span>${cause}</span>
+                </li>
+            `).join('');
+
+            // Populate treatments list
+            const treatmentsList = document.getElementById('treatmentsList');
+            treatmentsList.innerHTML = data.treatments.map(treatment => `
+                <li class="flex gap-2">
+                    <span class="text-tertiary">•</span>
+                    <span>${treatment}</span>
+                </li>
+            `).join('');
+        }
+
+        function showError(message) {
+            const resultsContainer = document.getElementById('resultsContainer');
+            resultsContainer.innerHTML = `
+                <div class="text-center">
+                    <div class="w-16 h-16 rounded-full bg-error/10 flex items-center justify-center mb-4 mx-auto">
+                        <span class="material-symbols-outlined text-4xl text-error">error</span>
+                    </div>
+                    <p class="text-error font-semibold mb-2">Analysis Failed</p>
+                    <p class="text-outline text-sm">${message}</p>
+                </div>
+            `;
+        }
+
+        // Allow Enter key to submit (with Shift+Enter for new line)
+        document.getElementById('symptomsInput').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                analyzeSymptoms();
+            }
+        });
+    </script>
+</body>
+</html>

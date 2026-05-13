@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html class="dark" lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>ClinicalMind | Dashboard</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cairo:wght@400;500;600;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="../css/dashboard-page.css">
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#005236",
+                        "tertiary-container": "#007d55",
+                        "surface-dim": "#11131b",
+                        "outline-variant": "#434655",
+                        "error": "#ffb4ab",
+                        "on-primary": "#002a78",
+                        "primary-container": "#2563eb",
+                        "surface-container-lowest": "#0c0e16",
+                        "outline": "#8d90a0",
+                        "tertiary-fixed": "#6ffbbe",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "on-surface": "#e1e2ed",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "on-primary-fixed": "#00174b",
+                        "primary": "#b4c5ff",
+                        "surface-tint": "#b4c5ff",
+                        "surface-container-high": "#282a32",
+                        "secondary-fixed-dim": "#bdc7d9",
+                        "on-surface-variant": "#c3c6d7",
+                        "on-error-container": "#ffdad6",
+                        "tertiary": "#4edea3",
+                        "surface-variant": "#32343d",
+                        "on-secondary": "#27313f",
+                        "secondary-fixed": "#d9e3f6",
+                        "surface-bright": "#373942",
+                        "on-secondary-fixed": "#121c2a",
+                        "background": "#11131b",
+                        "on-background": "#e1e2ed",
+                        "surface-container-low": "#191b23",
+                        "inverse-primary": "#0053db",
+                        "error-container": "#93000a",
+                        "on-secondary-fixed-variant": "#3d4756",
+                        "secondary-container": "#404a59",
+                        "inverse-on-surface": "#2e3039",
+                        "on-error": "#690005",
+                        "primary-fixed": "#dbe1ff",
+                        "on-tertiary-fixed": "#002113",
+                        "on-secondary-container": "#afb9cb",
+                        "secondary": "#bdc7d9",
+                        "surface-container": "#1d1f27",
+                        "inverse-surface": "#e1e2ed",
+                        "surface": "#11131b",
+                        "on-tertiary-container": "#bdffdb",
+                        "on-primary-container": "#eeefff",
+                        "surface-container-highest": "#32343d",
+                        "on-tertiary": "#003824",
+                        "primary-fixed-dim": "#b4c5ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "24px",
+                        "sidebar-width": "280px",
+                        "topbar-height": "64px",
+                        "gutter": "16px",
+                        "panel-padding": "24px",
+                        "margin-mobile": "16px"
+                    }
+                },
+            },
+        }
+    </script>
+    <script>
+        const translations = {
+            en: {
+                aiMedical: "AI Medical Intelligence",
+                newDiagnosis: "New Diagnosis",
+                categories: "Categories",
+                brainXray: "Brain X-ray",
+                chestXray: "Chest X-ray",
+                boneXray: "Bone X-ray",
+                brainAnalysis: "Brain X-ray Analysis",
+                chestAnalysis: "Chest X-ray Analysis",
+                boneAnalysis: "Bone X-ray Analysis",
+                theme: "Theme",
+                language: "Language",
+                help: "Help",
+                uploadImage: "Upload Image",
+                clickOrDrag: "Click or drag image here",
+                maxSize: "JPG, PNG, DICOM (Max 20MB)",
+                analysisResult: "Analysis Result",
+                analysisDetails: "Analysis details will populate here",
+                backToHome: "Back to Home",
+                confidence: "Confidence",
+                diagnosis: "Diagnosis",
+                recommendations: "Recommendations",
+                severity: "Severity",
+                analyze: "Analyze",
+                analyzing: "Analyzing...",
+                noImageSelected: "No image selected",
+                selectImage: "Please select an image first",
+                enterSymptoms: "Enter Symptoms",
+                diagnosisResult: "Diagnosis Result",
+                newDiagnosisDesc: "Enter patient symptoms and get AI-powered disease predictions with confidence scores",
+                brainXrayDesc: "Specialized analysis for brain X-ray images to detect abnormalities",
+                chestXrayDesc: "Specialized analysis for chest X-ray images to identify lung and heart conditions",
+                boneXrayDesc: "Specialized analysis for bone X-ray images to detect fractures and bone disorders"
+            },
+            ar: {
+                aiMedical: "ذكاء اصطناعي طبي",
+                newDiagnosis: "تشخيص جديد",
+                categories: "الفئات",
+                brainXray: "أشعة الدماغ",
+                chestXray: "أشعة الصدر",
+                boneXray: "أشعة العظام",
+                brainAnalysis: "تحليل أشعة الدماغ",
+                chestAnalysis: "تحليل أشعة الصدر",
+                boneAnalysis: "تحليل أشعة العظام",
+                theme: "المظهر",
+                language: "اللغة",
+                help: "مساعدة",
+                uploadImage: "رفع صورة",
+                clickOrDrag: "انقر أو اسحب الصورة هنا",
+                maxSize: "JPG, PNG, DICOM (الحد الأقصى 20MB)",
+                analysisResult: "نتيجة التحليل",
+                analysisDetails: "ستظهر تفاصيل التحليل هنا",
+                backToHome: "العودة إلى الرئيسية",
+                confidence: "درجة الثقة",
+                diagnosis: "التشخيص",
+                recommendations: "التوصيات",
+                severity: "درجة الخطورة",
+                analyze: "تحليل",
+                analyzing: "جاري التحليل...",
+                noImageSelected: "لم يتم اختيار صورة",
+                selectImage: "يرجى اختيار صورة أولاً",
+                enterSymptoms: "إدخال الأعراض",
+                diagnosisResult: "نتيجة التشخيص",
+                newDiagnosisDesc: "أدخل أعراض المريض واحصل على تنبؤات الأمراض المدعومة بالذكاء الاصطناعي مع درجات الثقة",
+                brainXrayDesc: "تحليل متخصص لصور أشعة الدماغ للكشف عن التشوهات",
+                chestXrayDesc: "تحليل متخصص لصور أشعة الصدر لتحديد حالات الرئة والقلب",
+                boneXrayDesc: "تحليل متخصص لصور أشعة العظام للكشف عن الكسور واضطرابات العظام"
+            }
+        };
+
+        let currentLanguage = localStorage.getItem('language') || 'en';
+
+        function setLanguage(lang) {
+            currentLanguage = lang;
+            localStorage.setItem('language', lang);
+            
+            const html = document.documentElement;
+            html.lang = lang;
+            html.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                el.textContent = translations[lang][key];
+            });
+            
+            // تحديث وصف الصفحة الحالية
+            const descKey = {
+                'diagnosis': 'newDiagnosisDesc',
+                'analysis-brain': 'brainXrayDesc',
+                'analysis-chest': 'chestXrayDesc',
+                'analysis-bone': 'boneXrayDesc'
+            };
+            const descElement = document.getElementById('pageDescription');
+            if (descElement && descKey[currentPage]) {
+                descElement.textContent = translations[lang][descKey[currentPage]];
+            }
+            
+            const style = document.getElementById('font-style');
+            if (lang === 'ar') {
+                style.textContent = `
+                    * { font-family: 'Cairo', sans-serif !important; }
+                    .material-symbols-outlined { font-family: 'Material Symbols Outlined' !important; }
+                `;
+            } else {
+                style.textContent = `
+                    * { font-family: 'Inter', sans-serif !important; }
+                    .material-symbols-outlined { font-family: 'Material Symbols Outlined' !important; }
+                `;
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            setLanguage(currentLanguage);
+            // عرض الوصف الافتراضي للصفحة الأولى
+            updatePageDescription('newDiagnosisDesc');
+            // تعيين نص زر اللغة
+            const langToggle = document.getElementById('langToggle');
+            if (langToggle) {
+                langToggle.textContent = currentLanguage === 'en' ? 'EN / AR' : 'ع / إ';
+            }
+            // استعادة المظهر المحفوظ
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            if (savedTheme === 'dark') {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+            // تطبيق التضليل على الصفحة الأولى
+            showPage('diagnosis');
+        });
+
+        function toggleLanguage() {
+            const newLang = currentLanguage === 'en' ? 'ar' : 'en';
+            setLanguage(newLang);
+            // تحديث نص الزر
+            const langToggle = document.getElementById('langToggle');
+            if (langToggle) {
+                langToggle.textContent = newLang === 'en' ? 'EN / AR' : 'ع / إ';
+            }
+        }
+
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+            // حفظ المظهر
+            const isDark = document.documentElement.classList.contains('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        }
+
+        let currentPage = 'diagnosis';
+
+        const API_BASE_URL = 'http://localhost:8000';
+
+        function getPreviewImageSrc(previewId) {
+            const preview = document.getElementById(previewId);
+            const previewImage = preview ? preview.querySelector('img') : null;
+            return previewImage ? previewImage.src : '';
+        }
+
+        function setButtonState(buttonId, disabled, label) {
+            const button = document.getElementById(buttonId);
+            if (!button) {
+                return;
+            }
+
+            button.disabled = disabled;
+            if (label) {
+                button.textContent = label;
+            }
+        }
+
+        function renderPredictionResult(containerId, data, previewSrc) {
+            const resultContainer = document.getElementById(containerId);
+            if (!resultContainer) {
+                throw new Error(`Result container not found: ${containerId}`);
+            }
+
+            const prediction = data.prediction || 'Unknown';
+            const confidence = Number(data.confidence ?? 0);
+
+            resultContainer.innerHTML = `
+                <div class="space-y-6 w-full">
+                    <div class="glass-panel rounded-2xl p-panel-padding">
+                        <h4 class="font-headline-sm text-on-surface mb-4">Uploaded Image</h4>
+                        <div class="flex items-center gap-4">
+                            <div class="w-24 h-24 rounded-xl overflow-hidden bg-surface-container-high/30 border border-outline-variant/10 flex items-center justify-center shrink-0">
+                                ${previewSrc ? `<img src="${previewSrc}" alt="Uploaded preview" class="w-full h-full object-contain" />` : '<span class="material-symbols-outlined text-4xl text-outline">image_not_supported</span>'}
+                            </div>
+                            <div>
+                                <p class="text-sm text-on-surface-variant">Preview sent to the AI model</p>
+                                <p class="text-xs uppercase tracking-[0.25em] text-outline mt-2">Chest X-ray Analysis</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-panel rounded-2xl p-panel-padding">
+                        <h4 class="font-headline-sm text-on-surface mb-4">Prediction</h4>
+                        <p class="text-2xl font-bold text-on-surface">${prediction}</p>
+                    </div>
+
+                    <div class="glass-panel rounded-2xl p-panel-padding">
+                        <h4 class="font-headline-sm text-on-surface mb-4">Confidence</h4>
+                        <div class="flex items-center gap-4">
+                            <div class="flex-1 bg-surface-container-high rounded-full h-2 overflow-hidden">
+                                <div class="bg-tertiary h-2 rounded-full" style="width: ${Math.max(0, Math.min(100, confidence))}%"></div>
+                            </div>
+                            <span class="text-tertiary font-bold whitespace-nowrap">${confidence.toFixed(2)}%</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderAnalysisError(containerId, issueArea, error, fallbackMessage) {
+            const resultContainer = document.getElementById(containerId);
+            if (!resultContainer) {
+                throw new Error(`Result container not found: ${containerId}`);
+            }
+
+            resultContainer.innerHTML = `
+                <div class="glass-panel rounded-2xl p-panel-padding bg-error/10 border border-error/30 w-full">
+                    <h4 class="font-headline-sm text-error mb-3">Analysis failed</h4>
+                    <p class="text-on-surface-variant mb-3">${fallbackMessage}</p>
+                    <div class="space-y-1 text-sm text-on-surface-variant">
+                        <p><span class="font-bold text-on-surface">Issue area:</span> ${issueArea}</p>
+                        <p><span class="font-bold text-on-surface">Error:</span> ${error instanceof Error ? error.message : String(error)}</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        function goHome() {
+            window.location.href = 'home.html';
+        }
+
+        function showPage(page) {
+            currentPage = page;
+            
+            // إخفاء جميع الصفحات
+            document.getElementById('diagnosisPage').style.display = 'none';
+            document.getElementById('analysisPage').style.display = 'none';
+            
+            // إزالة الحالة النشطة من جميع عناصر القائمة
+            document.querySelectorAll('aside a').forEach(link => {
+                link.classList.remove('bg-primary/10', 'dark:bg-primary-container/20', 'text-primary', 'dark:text-primary', 'border-l-4', 'border-primary', 'shadow-sm');
+                link.classList.add('text-on-surface-variant/70', 'hover:text-on-surface', 'hover:bg-surface-container-high', 'dark:hover:bg-white/5');
+            });
+            
+            // دالة مساعدة لتطبيق التضليل
+            function setActiveLink(pageType) {
+                const links = document.querySelectorAll('aside a');
+                links.forEach(link => {
+                    const onclick = link.getAttribute('onclick');
+                    if (onclick && onclick.includes(`showPage('${pageType}')`)) {
+                        link.classList.remove('text-on-surface-variant/70', 'hover:text-on-surface', 'hover:bg-surface-container-high', 'dark:hover:bg-white/5');
+                        link.classList.add('bg-primary/10', 'dark:bg-primary-container/20', 'text-primary', 'dark:text-primary', 'border-l-4', 'border-primary', 'shadow-sm');
+                    }
+                });
+            }
+            
+            // إظهار الصفحة المختارة وتحديث الحالة النشطة
+            if (page === 'diagnosis') {
+                document.getElementById('diagnosisPage').style.display = 'block';
+                updatePageDescription('newDiagnosisDesc');
+                setActiveLink('diagnosis');
+            } else if (page.startsWith('analysis-')) {
+                const category = page.split('-')[1];
+                document.getElementById('analysisPage').style.display = 'block';
+                updateAnalysisCategory(category);
+                
+                // تحديد الوصف بناءً على الفئة
+                const descKey = {
+                    'brain': 'brainXrayDesc',
+                    'chest': 'chestXrayDesc',
+                    'bone': 'boneXrayDesc'
+                };
+                updatePageDescription(descKey[category]);
+                
+                // تحديد عنصر القائمة النشط بناءً على الفئة
+                setActiveLink(`analysis-${category}`);
+            }
+        }
+
+        function updatePageDescription(descKey) {
+            const descElement = document.getElementById('pageDescription');
+            if (descElement) {
+                descElement.textContent = translations[currentLanguage][descKey];
+            }
+        }
+
+        function updateAnalysisCategory(category) {
+            const categoryNames = {
+                'brain': translations[currentLanguage].brainAnalysis,
+                'chest': translations[currentLanguage].chestAnalysis,
+                'bone': translations[currentLanguage].boneAnalysis
+            };
+            document.getElementById('analysisCategoryTitle').textContent = categoryNames[category] || categoryNames['brain'];
+        }
+
+        function handleImageUpload(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const preview = document.getElementById('imagePreview');
+                    preview.innerHTML = `<img src="${e.target.result}" class="w-full h-full object-contain rounded-xl" alt="Preview">`;
+                    document.getElementById('analyzeBtn').disabled = false;
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        async function analyzeImage() {
+            const fileInput = document.getElementById('imageInput');
+            const file = fileInput ? fileInput.files[0] : null;
+            const previewSrc = getPreviewImageSrc('imagePreview');
+
+            if (!file || !previewSrc) {
+                alert(translations[currentLanguage].selectImage);
+                return;
+            }
+
+            setButtonState('analyzeBtn', true, translations[currentLanguage].analyzing);
+
+            try {
+                const formData = new FormData();
+                formData.append('file', file);
+                formData.append('category', 'chest');
+
+                const response = await fetch(`${API_BASE_URL}/predict`, {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    throw new Error(errorText || `Request failed with status ${response.status}`);
+                }
+
+                const data = await response.json();
+                renderPredictionResult('resultContainer', data, previewSrc);
+            } catch (error) {
+                const issueArea = error instanceof TypeError ? 'API request / CORS' : 'API request';
+                renderAnalysisError('resultContainer', issueArea, error, 'The chest analysis request did not complete.');
+                console.error('Chest analysis failed:', error);
+            } finally {
+                setButtonState('analyzeBtn', false, translations[currentLanguage].analyze);
+            }
+        }
+
+        function handleAnalysisImageUpload(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const preview = document.getElementById('analysisImagePreview');
+                    preview.innerHTML = `<img src="${e.target.result}" class="w-full h-full object-contain rounded-xl" alt="Preview">`;
+                    document.getElementById('analysisAnalyzeBtn').disabled = false;
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        async function analyzeImageCategory() {
+            const fileInput = document.getElementById('analysisImageInput');
+            const file = fileInput ? fileInput.files[0] : null;
+            const previewSrc = getPreviewImageSrc('analysisImagePreview');
+
+            if (!file || !previewSrc) {
+                alert(translations[currentLanguage].selectImage);
+                return;
+            }
+
+            const category = currentPage.split('-')[1] || 'chest';
+
+            setButtonState('analysisAnalyzeBtn', true, translations[currentLanguage].analyzing);
+
+            try {
+                const formData = new FormData();
+                formData.append('file', file);
+                formData.append('category', category);
+
+                const response = await fetch(`${API_BASE_URL}/predict`, {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    throw new Error(errorText || `Request failed with status ${response.status}`);
+                }
+
+                const data = await response.json();
+                renderPredictionResult('analysisResultContainer', data, previewSrc);
+            } catch (error) {
+                const issueArea = error instanceof TypeError ? 'API request / CORS' : 'API request';
+                renderAnalysisError('analysisResultContainer', issueArea, error, `The ${category} analysis request did not complete.`);
+                console.error('Chest category analysis failed:', error);
+            } finally {
+                setButtonState('analysisAnalyzeBtn', false, translations[currentLanguage].analyze);
+            }
+        }
+
+        async function analyzeDiagnosis() {
+            const symptomsInput = document.getElementById('symptomsInput');
+            const symptoms = symptomsInput.value.trim();
+
+            if (!symptoms || symptoms.length < 10) {
+                alert(currentLanguage === 'en' ? 'Please enter detailed symptoms (at least 10 characters)' : 'يرجى إدخال أعراض مفصلة (10 أحرف على الأقل)');
+                return;
+            }
+
+            // Detect language from symptoms
+            const symptomsLanguage = detectLanguage(symptoms);
+
+            const analyzeBtn = document.getElementById('diagnosisBtn');
+            const resultContainer = document.getElementById('diagnosisResultContainer');
+            
+            analyzeBtn.disabled = true;
+            analyzeBtn.textContent = translations[currentLanguage].analyzing;
+
+            // Show loading state
+            resultContainer.innerHTML = `
+                <div class="flex flex-col items-center justify-center py-12">
+                    <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4 pulse-animation">
+                        <span class="material-symbols-outlined text-4xl text-primary">psychology</span>
+                    </div>
+                    <p class="text-on-surface font-semibold">${currentLanguage === 'en' ? 'AI is analyzing your symptoms...' : 'الذكاء الاصطناعي يحلل الأعراض...'}</p>
+                    <p class="text-outline text-sm mt-2">${currentLanguage === 'en' ? 'This may take a few moments' : 'قد يستغرق هذا بضع لحظات'}</p>
+                </div>
+            `;
+
+            try {
+                // Call FastAPI backend with detected language
+                const response = await fetch('http://localhost:8000/analyze-symptoms', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        symptoms: symptoms,
+                        language: symptomsLanguage  // Use detected language from symptoms
+                    })
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.detail || 'Analysis failed');
+                }
+
+                const data = await response.json();
+                
+                // Determine severity color
+                const severityColors = {
+                    'Mild': 'tertiary',
+                    'Moderate': 'primary',
+                    'Severe': 'error',
+                    'Critical': 'error',
+                    'خفيف': 'tertiary',
+                    'متوسط': 'primary',
+                    'شديد': 'error',
+                    'حرج': 'error'
+                };
+                const severityColor = severityColors[data.severity] || 'primary';
+
+                // Display results
+                resultContainer.innerHTML = `
+                    <div class="space-y-6">
+                        <!-- Disease Name & Severity - Side by Side -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-surface-container-low/50 rounded-xl p-5 border border-outline-variant/10">
+                                <div class="flex items-center gap-3 mb-2">
+                                    <span class="material-symbols-outlined text-primary">diagnosis</span>
+                                    <h4 class="text-sm font-semibold text-outline uppercase tracking-wider">${symptomsLanguage === 'en' ? 'Diagnosis' : 'التشخيص'}</h4>
+                                </div>
+                                <p class="text-2xl font-bold text-on-surface">${data.disease_name}</p>
+                            </div>
+
+                            <div class="bg-surface-container-low/50 rounded-xl p-5 border border-outline-variant/10">
+                                <div class="flex items-center gap-3 mb-2">
+                                    <span class="material-symbols-outlined text-${severityColor}">emergency</span>
+                                    <h4 class="text-sm font-semibold text-outline uppercase tracking-wider">${symptomsLanguage === 'en' ? 'Severity' : 'درجة الخطورة'}</h4>
+                                </div>
+                                <span class="px-4 py-2 rounded-full bg-${severityColor}/20 text-${severityColor} font-bold text-lg inline-block">${data.severity}</span>
+                            </div>
+                        </div>
+
+                        <!-- Causes & Treatments - Side by Side -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-surface-container-low/50 rounded-xl p-5 border border-outline-variant/10">
+                                <div class="flex items-center gap-3 mb-4">
+                                    <div class="w-10 h-10 rounded-lg bg-error/10 flex items-center justify-center">
+                                        <span class="material-symbols-outlined text-error">coronavirus</span>
+                                    </div>
+                                    <h4 class="font-semibold text-on-surface">${symptomsLanguage === 'en' ? 'Possible Causes' : 'الأسباب المحتملة'}</h4>
+                                </div>
+                                <ul class="space-y-2 text-on-surface-variant text-sm">
+                                    ${data.causes.map(cause => `
+                                        <li class="flex gap-2">
+                                            <span class="text-error">•</span>
+                                            <span>${cause}</span>
+                                        </li>
+                                    `).join('')}
+                                </ul>
+                            </div>
+
+                            <div class="bg-surface-container-low/50 rounded-xl p-5 border border-outline-variant/10">
+                                <div class="flex items-center gap-3 mb-4">
+                                    <div class="w-10 h-10 rounded-lg bg-tertiary/10 flex items-center justify-center">
+                                        <span class="material-symbols-outlined text-tertiary">medication</span>
+                                    </div>
+                                    <h4 class="font-semibold text-on-surface">${symptomsLanguage === 'en' ? 'Recommended Treatments' : 'العلاجات الموصى بها'}</h4>
+                                </div>
+                                <ul class="space-y-2 text-on-surface-variant text-sm">
+                                    ${data.treatments.map(treatment => `
+                                        <li class="flex gap-2">
+                                            <span class="text-tertiary">•</span>
+                                            <span>${treatment}</span>
+                                        </li>
+                                    `).join('')}
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Disclaimer -->
+                        <div class="p-4 rounded-xl bg-error/5 border border-error/20 flex gap-3">
+                            <span class="material-symbols-outlined text-error text-xl">warning</span>
+                            <div class="flex-1 text-sm text-on-surface-variant">
+                                <p class="font-semibold text-error mb-1">${symptomsLanguage === 'en' ? 'Medical Disclaimer' : 'إخلاء مسؤولية طبية'}</p>
+                                <p>${symptomsLanguage === 'en' ? 'This AI analysis is for informational purposes only and should not replace professional medical advice.' : 'هذا التحليل بالذكاء الاصطناعي لأغراض إعلامية فقط ولا يجب أن يحل محل المشورة الطبية المهنية.'}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+            } catch (error) {
+                console.error('Error:', error);
+                resultContainer.innerHTML = `
+                    <div class="flex flex-col items-center justify-center py-12">
+                        <div class="w-16 h-16 rounded-full bg-error/10 flex items-center justify-center mb-4">
+                            <span class="material-symbols-outlined text-4xl text-error">error</span>
+                        </div>
+                        <p class="text-error font-semibold mb-2">${currentLanguage === 'en' ? 'Analysis Failed' : 'فشل التحليل'}</p>
+                        <p class="text-outline text-sm text-center max-w-md">${error.message || (currentLanguage === 'en' ? 'Failed to analyze symptoms. Please check if the backend server is running on port 8000.' : 'فشل تحليل الأعراض. يرجى التحقق من تشغيل الخادم على المنفذ 8000.')}</p>
+                        <button onclick="analyzeDiagnosis()" class="mt-4 px-6 py-2 rounded-xl bg-primary text-on-primary font-bold hover:shadow-lg transition-all">
+                            ${currentLanguage === 'en' ? 'Try Again' : 'حاول مرة أخرى'}
+                        </button>
+                    </div>
+                `;
+            } finally {
+                analyzeBtn.disabled = false;
+                analyzeBtn.textContent = translations[currentLanguage].analyze;
+            }
+        }
+
+        // Detect language from text
+        function detectLanguage(text) {
+            // Check if text contains Arabic characters
+            const arabicRegex = /[\u0600-\u06FF]/g;
+            return arabicRegex.test(text) ? 'ar' : 'en';
+        }
+    </script>
+    <style id="font-style">
+        * { font-family: 'Inter', sans-serif; }
+    </style>
+    <style>
+        /* Light Mode Colors - Complete Override */
+        html:not(.dark) {
+            --bg-color: #f5f7fa;
+            --surface-color: #ffffff;
+            --text-color: #000000;
+            --text-secondary: #1a1a1a;
+            --border-color: #e2e8f0;
+            --accent-color: #2563eb;
+        }
+        
+        html:not(.dark) body {
+            background-color: #f5f7fa !important;
+            color: #000000 !important;
+        }
+        
+        html:not(.dark) header {
+            background: #ffffff !important;
+            border-bottom: 2px solid #e2e8f0 !important;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08) !important;
+        }
+        
+        html:not(.dark) aside {
+            background: #ffffff !important;
+            border-right: 2px solid #e2e8f0 !important;
+            box-shadow: 1px 0 3px rgba(0, 0, 0, 0.05) !important;
+        }
+        
+        html:not(.dark) .glass-panel {
+            background: #ffffff !important;
+            border: 1px solid #e2e8f0 !important;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+        }
+        
+        html:not(.dark) .glass-panel:hover {
+            border-color: #cbd5e1 !important;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.1) !important;
+        }
+        
+        html:not(.dark) * {
+            color: #000000 !important;
+        }
+        
+        html:not(.dark) .text-on-surface {
+            color: #000000 !important;
+        }
+        
+        html:not(.dark) .text-on-surface-variant {
+            color: #1a1a1a !important;
+        }
+        
+        html:not(.dark) h1, html:not(.dark) h2, html:not(.dark) h3, html:not(.dark) h4, html:not(.dark) h5, html:not(.dark) h6 {
+            color: #000000 !important;
+            font-weight: 700 !important;
+        }
+        
+        html:not(.dark) p {
+            color: #1a1a1a !important;
+        }
+        
+        html:not(.dark) span {
+            color: #000000 !important;
+        }
+        
+        html:not(.dark) div {
+            color: #000000 !important;
+        }
+        
+        html:not(.dark) textarea {
+            background-color: #f8fafc !important;
+            color: #000000 !important;
+            border: 2px solid #e2e8f0 !important;
+            border-radius: 0.75rem !important;
+        }
+        
+        html:not(.dark) textarea:focus {
+            border-color: #2563eb !important;
+            background-color: #ffffff !important;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1) !important;
+        }
+        
+        html:not(.dark) textarea::placeholder {
+            color: #666666 !important;
+        }
+        
+        html:not(.dark) button {
+            transition: all 0.3s ease;
+        }
+        
+        html:not(.dark) .bg-surface-container-high {
+            background-color: #f1f5f9 !important;
+        }
+        
+        html:not(.dark) .bg-surface-container-lowest {
+            background-color: #f1f5f9 !important;
+        }
+        
+        html:not(.dark) .border-outline-variant {
+            border-color: #e2e8f0 !important;
+        }
+        
+        html:not(.dark) main {
+            background-color: #f5f7fa !important;
+        }
+        
+        html:not(.dark) .upload-dashed {
+            background-color: #f8fafc !important;
+            border: 2px dashed #cbd5e1 !important;
+        }
+        
+        html:not(.dark) .upload-dashed:hover {
+            background-color: #f1f5f9 !important;
+            border-color: #2563eb !important;
+        }
+        
+        html:not(.dark) .upload-dashed p {
+            color: #000000 !important;
+            font-weight: 600 !important;
+        }
+        
+        html:not(.dark) .upload-dashed .text-outline {
+            color: #1a1a1a !important;
+        }
+        
+        html:not(.dark) .material-symbols-outlined {
+            color: #000000 !important;
+        }
+        
+        html:not(.dark) .text-outline {
+            color: #1a1a1a !important;
+        }
+        
+        html:not(.dark) .opacity-60 {
+            opacity: 1 !important;
+            color: #1a1a1a !important;
+        }
+        
+        html:not(.dark) .opacity-10 {
+            opacity: 0.3 !important;
+        }
+        
+        html:not(.dark) .opacity-20 {
+            opacity: 0.4 !important;
+        }
+        
+        html:not(.dark) .opacity-50 {
+            opacity: 0.7 !important;
+        }
+        
+        html:not(.dark) .opacity-90 {
+            opacity: 1 !important;
+        }
+        
+        html:not(.dark) button[onclick*="toggleLanguage"] {
+            background: linear-gradient(135deg, #dbeafe 0%, #d1fae5 100%) !important;
+            border: 1px solid #93c5fd !important;
+            color: #000000 !important;
+        }
+        
+        html:not(.dark) button[onclick*="toggleLanguage"]:hover {
+            background: linear-gradient(135deg, #bfdbfe 0%, #a7f3d0 100%) !important;
+            border-color: #60a5fa !important;
+        }
+        
+        html:not(.dark) button[onclick*="toggleTheme"] {
+            background-color: #f1f5f9 !important;
+            border: 1px solid #cbd5e1 !important;
+            color: #000000 !important;
+        }
+        
+        html:not(.dark) button[onclick*="toggleTheme"]:hover {
+            background-color: #e2e8f0 !important;
+            border-color: #94a3b8 !important;
+            color: #2563eb !important;
+        }
+        
+        html:not(.dark) button[onclick*="goHome"] {
+            color: #2563eb !important;
+        }
+        
+        html:not(.dark) button[onclick*="goHome"]:hover {
+            background-color: #dbeafe !important;
+        }
+        
+        html:not(.dark) #analyzeBtn, html:not(.dark) #diagnosisBtn, html:not(.dark) #analysisAnalyzeBtn {
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important;
+            color: #ffffff !important;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3) !important;
+        }
+        
+        html:not(.dark) #analyzeBtn:hover:enabled, html:not(.dark) #diagnosisBtn:hover:enabled, html:not(.dark) #analysisAnalyzeBtn:hover:enabled {
+            box-shadow: 0 6px 16px rgba(37, 99, 235, 0.4) !important;
+            transform: translateY(-2px) !important;
+        }
+        
+        html:not(.dark) a {
+            color: #2563eb !important;
+        }
+        
+        html:not(.dark) a:hover {
+            color: #1d4ed8 !important;
+        }
+        
+        html:not(.dark) .bg-primary {
+            background-color: #2563eb !important;
+            color: #ffffff !important;
+        }
+        
+        html:not(.dark) .text-primary {
+            color: #2563eb !important;
+        }
+        
+        html:not(.dark) .bg-tertiary {
+            background-color: #10b981 !important;
+        }
+        
+        html:not(.dark) .text-tertiary {
+            color: #10b981 !important;
+        }
+        
+        html:not(.dark) .font-headline-sm,
+        html:not(.dark) .font-headline-md,
+        html:not(.dark) .font-display-lg {
+            color: #000000 !important;
+        }
+        
+        html:not(.dark) li {
+            color: #000000 !important;
+        }
+        
+        html:not(.dark) .text-xs,
+        html:not(.dark) .text-sm,
+        html:not(.dark) .text-base,
+        html:not(.dark) .text-lg,
+        html:not(.dark) .text-xl {
+            color: #000000 !important;
+        }
+    </style>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .glass-panel {
+            background: rgba(25, 27, 35, 0.4);
+            -webkit-backdrop-filter: blur(24px);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .light .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 24px -4px rgba(0, 0, 0, 0.04);
+        }
+        .upload-dashed {
+            background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='12' ry='12' stroke='%238D90A044' stroke-width='2' stroke-dasharray='8%2c 8' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+        }
+        .light .upload-dashed {
+            background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='12' ry='12' stroke='%232563EB33' stroke-width='2' stroke-dasharray='8%2c 8' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(141, 144, 160, 0.2);
+            border-radius: 10px;
+        }
+        .pulse-animation {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        .ltr-direction {
+            direction: ltr;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: .5; }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md overflow-hidden transition-colors duration-300">
+    <!-- Sidebar Navigation -->
+    <aside class="fixed h-full w-[sidebar-width] left-0 top-0 border-r border-outline-variant/10 bg-surface-container-lowest dark:bg-surface-dim/95 backdrop-blur-2xl flex flex-col py-8 px-6 z-50 transition-colors duration-300">
+        <div class="mb-12">
+            <img src="../assets/images/logo.png" alt="ClinicalMind Logo" class="h-40 w-auto mb-3">
+        </div>
+        <nav class="flex-1 space-y-2 overflow-y-auto pr-2 custom-scrollbar">
+            <a class="text-on-surface-variant/70 hover:text-on-surface hover:bg-surface-container-high dark:hover:bg-white/5 rounded-xl flex items-center gap-3.5 px-4 py-4 transition-all duration-200 cursor-pointer" onclick="showPage('diagnosis')">
+                <span class="material-symbols-outlined text-[24px]">stethoscope</span>
+                <div class="flex flex-col">
+                    <span class="font-headline-sm text-[14px]" data-i18n="newDiagnosis">New Diagnosis</span>
+                </div>
+            </a>
+            <div class="pt-8 pb-3 px-4">
+                <span class="text-[11px] uppercase tracking-widest text-outline font-bold opacity-60" data-i18n="categories">Categories</span>
+            </div>
+            <div class="space-y-1">
+                <a class="text-on-surface-variant/70 hover:text-on-surface hover:bg-surface-container-high dark:hover:bg-white/5 rounded-xl flex items-center gap-3.5 px-4 py-3.5 transition-all duration-200 cursor-pointer" onclick="showPage('analysis-brain')">
+                    <span class="material-symbols-outlined text-[22px]">psychology</span>
+                    <span class="font-headline-sm text-[14px]" data-i18n="brainXray">Brain X-ray</span>
+                </a>
+                <a class="text-on-surface-variant/70 hover:text-on-surface hover:bg-surface-container-high dark:hover:bg-white/5 rounded-xl flex items-center gap-3.5 px-4 py-3.5 transition-all duration-200 cursor-pointer" onclick="showPage('analysis-chest')">
+                    <span class="material-symbols-outlined text-[22px]">favorite</span>
+                    <span class="font-headline-sm text-[14px]" data-i18n="chestXray">أشعة الصدر</span>
+                </a>
+                <a class="text-on-surface-variant/70 hover:text-on-surface hover:bg-surface-container-high dark:hover:bg-white/5 rounded-xl flex items-center gap-3.5 px-4 py-3.5 transition-all duration-200 cursor-pointer" onclick="showPage('analysis-bone')">
+                    <span class="material-symbols-outlined text-[22px]">orthopedics</span>
+                    <span class="font-headline-sm text-[14px]" data-i18n="boneXray">Bone X-ray</span>
+                </a>
+            </div>
+        </nav>
+        <!-- Footer Navigation -->
+        <div class="mt-auto border-t border-outline-variant/10 pt-6 space-y-3">
+            <button onclick="window.location.href='help.html'" class="w-full flex items-center justify-center gap-2 py-2.5 rounded-lg hover:bg-surface-container-high dark:hover:bg-white/5 text-on-surface-variant hover:text-primary transition-all group" title="Help & Support">
+                <span class="material-symbols-outlined text-lg group-hover:scale-110 transition-transform">help</span>
+                <span class="text-xs font-semibold uppercase tracking-wider" data-i18n="help">Help</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="ml-[280px] h-screen flex flex-col bg-background/50 dark:bg-background/95">
+        <!-- Top App Bar -->
+        <header class="h-auto border-b border-outline-variant/10 flex flex-col px-margin-desktop bg-surface/30 dark:bg-surface-dim/30 backdrop-blur-xl sticky top-0 z-40 transition-colors duration-300 py-4 ltr-direction">
+            <div class="flex items-center justify-between mb-3">
+                <h2 class="font-headline-md text-on-surface">Dashboard</h2>
+                <div class="flex items-center gap-3">
+                    <button onclick="toggleLanguage()" class="flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-primary/20 to-tertiary/20 hover:from-primary/30 hover:to-tertiary/30 text-primary hover:text-primary transition-all border border-primary/30 hover:border-primary/50 group">
+                        <span class="text-lg">🌐</span>
+                        <span class="text-sm font-bold">EN / AR</span>
+                    </button>
+                    <button onclick="toggleTheme()" class="w-10 h-10 rounded-full bg-surface-container/30 hover:bg-surface-container/50 text-on-surface-variant hover:text-primary transition-all border border-outline/20 hover:border-primary/30 flex items-center justify-center group flex-shrink-0">
+                        <span class="text-lg">🌙</span>
+                    </button>
+                    <button onclick="goHome()" class="px-4 py-2 rounded-lg text-primary hover:bg-primary/10 transition-all" data-i18n="backToHome">Back to Home</button>
+                </div>
+            </div>
+            <div class="flex items-center gap-3">
+                <div class="w-1 h-6 rounded-full bg-gradient-to-b from-primary to-tertiary"></div>
+                <p id="pageDescription" class="text-on-surface-variant text-sm font-medium">Enter patient symptoms and get AI-powered disease predictions with confidence scores</p>
+            </div>
+        </header>
+
+        <!-- Dashboard Canvas -->
+        <div class="flex-1 p-margin-desktop overflow-y-auto space-y-gutter flex flex-col">
+            
+            <!-- Diagnosis Page -->
+            <div id="diagnosisPage" class="space-y-gutter flex flex-col flex-1 hidden">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-gutter">
+                    <section class="glass-panel rounded-2xl p-panel-padding flex flex-col min-h-[500px] transition-all">
+                        <div class="flex items-center justify-between mb-6">
+                            <h3 class="font-headline-md text-on-surface" data-i18n="enterSymptoms">Enter Symptoms</h3>
+                            <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+                                <span class="material-symbols-outlined text-xl">medical_information</span>
+                            </div>
+                        </div>
+                        
+                        <textarea id="symptomsInput" placeholder="Describe the patient's symptoms..." class="flex-1 mb-6 resize-none bg-surface-container/50 border border-outline-variant/20 rounded-xl p-4 text-on-surface placeholder-on-surface-variant/50 focus:outline-none focus:border-primary"></textarea>
+
+                        <button id="diagnosisBtn" onclick="analyzeDiagnosis()" class="w-full py-3 rounded-xl bg-primary text-on-primary font-bold transition-all hover:shadow-lg" data-i18n="analyze">Analyze</button>
+                    </section>
+
+                    <section class="glass-panel rounded-2xl p-panel-padding flex flex-col min-h-[500px] transition-all">
+                        <div class="flex items-center justify-between mb-6">
+                            <h3 class="font-headline-md text-on-surface">Information</h3>
+                            <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+                                <span class="material-symbols-outlined text-xl">info</span>
+                            </div>
+                        </div>
+                        
+                        <div class="flex-1 space-y-4">
+                            <div class="glass-panel rounded-xl p-4">
+                                <h4 class="font-bold text-on-surface mb-2">Tips for Better Diagnosis:</h4>
+                                <ul class="space-y-2 text-sm text-on-surface-variant">
+                                    <li class="flex gap-2">
+                                        <span class="text-tertiary">•</span>
+                                        <span>Be specific about symptoms</span>
+                                    </li>
+                                    <li class="flex gap-2">
+                                        <span class="text-tertiary">•</span>
+                                        <span>Include duration of symptoms</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <section class="glass-panel rounded-2xl p-panel-padding flex flex-col flex-1 transition-all">
+                    <div class="flex items-center justify-between mb-8">
+                        <h3 class="font-headline-md text-on-surface" data-i18n="diagnosisResult">Diagnosis Result</h3>
+                    </div>
+                    <div id="diagnosisResultContainer" class="flex-1 flex flex-col items-center justify-center py-8">
+                        <div class="text-center opacity-20 select-none">
+                            <span class="material-symbols-outlined text-7xl text-outline mb-4">description</span>
+                            <p class="font-bold uppercase tracking-[0.35em] text-[11px] text-on-surface" data-i18n="analysisDetails">Analysis details will populate here</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Analysis Page -->
+            <div id="analysisPage" class="space-y-gutter flex flex-col flex-1 hidden">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-gutter">
+                    <section class="glass-panel rounded-2xl p-panel-padding flex flex-col min-h-[500px] transition-all">
+                        <div class="flex items-center justify-between mb-6">
+                            <h3 class="font-headline-md text-on-surface" data-i18n="uploadImage">Upload Image</h3>
+                            <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+                                <span class="material-symbols-outlined text-xl">cloud_upload</span>
+                            </div>
+                        </div>
+                        
+                        <div class="flex-1 upload-dashed rounded-2xl flex flex-col items-center justify-center p-6 cursor-pointer hover:bg-primary/[0.03] transition-colors group relative">
+                            <input type="file" id="analysisImageInput" title="Upload medical image" accept="image/*" onchange="handleAnalysisImageUpload(event)" class="absolute inset-0 opacity-0 cursor-pointer">
+                            <div class="w-14 h-14 rounded-full bg-surface-container-high/50 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                                <span class="material-symbols-outlined text-4xl text-outline group-hover:text-primary transition-colors">add</span>
+                            </div>
+                            <p class="font-headline-sm text-on-surface text-base" data-i18n="clickOrDrag">Click or drag image here</p>
+                            <p class="text-xs text-outline mt-1 opacity-60" data-i18n="maxSize">JPG, PNG, DICOM (Max 20MB)</p>
+                        </div>
+
+                        <button id="analysisAnalyzeBtn" onclick="analyzeImageCategory()" disabled class="mt-6 w-full py-3 rounded-xl bg-primary text-on-primary font-bold transition-all disabled:opacity-50 disabled:cursor-not-allowed hover:enabled:shadow-lg" data-i18n="analyze">Analyze</button>
+                    </section>
+
+                    <section class="glass-panel rounded-2xl p-panel-padding flex flex-col min-h-[500px] transition-all">
+                        <div class="flex items-center justify-between mb-6">
+                            <h3 class="font-headline-md text-on-surface">Preview</h3>
+                            <div class="w-10 h-10 rounded-xl bg-surface-container-high/30 flex items-center justify-center text-outline">
+                                <span class="material-symbols-outlined text-xl">image</span>
+                            </div>
+                        </div>
+                        <div id="analysisImagePreview" class="flex-1 bg-surface-container-lowest/30 rounded-2xl border border-outline-variant/5 flex items-center justify-center relative overflow-hidden">
+                            <div class="text-center opacity-10 flex flex-col items-center">
+                                <span class="material-symbols-outlined text-8xl">image_not_supported</span>
+                                <p class="mt-4 font-bold uppercase tracking-[0.25em] text-xs" data-i18n="noImageSelected">No image selected</p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <section class="glass-panel rounded-2xl p-panel-padding flex flex-col flex-1 transition-all">
+                    <div class="flex items-center justify-between mb-8">
+                        <h3 class="font-headline-md text-on-surface" id="analysisCategoryTitle" data-i18n="analysisResult">Analysis Result</h3>
+                    </div>
+                    <div id="analysisResultContainer" class="flex-1 flex flex-col items-center justify-center py-8">
+                        <div class="text-center opacity-20 select-none">
+                            <span class="material-symbols-outlined text-7xl text-outline mb-4">description</span>
+                            <p class="font-bold uppercase tracking-[0.35em] text-[11px] text-on-surface" data-i18n="analysisDetails">Analysis details will populate here</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- JavaScript Files -->
+    <script src="../js/gemini-api.js"></script>
+</body>
+</html>

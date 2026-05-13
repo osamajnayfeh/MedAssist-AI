@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>ClinicalMind | AI Medical Intelligence</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cairo:wght@400;500;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="../css/home-styles.css">
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#b4c5ff",
+                        "primary-container": "#2563eb",
+                        "tertiary": "#4edea3",
+                        "surface": "#11131b",
+                        "surface-dim": "#0c0e16",
+                        "surface-container": "#1d1f27",
+                        "on-surface": "#e1e2ed",
+                        "on-surface-variant": "#c3c6d7",
+                        "outline": "#8d90a0",
+                        "background": "#11131b",
+                        "light-surface": "#ffffff",
+                        "light-background": "#f5f5f5",
+                        "light-on-surface": "#1a1a1a",
+                        "light-on-surface-variant": "#5f5f5f"
+                    }
+                },
+            },
+        }
+    </script>
+    <style id="font-style">
+        * { font-family: 'Inter', sans-serif; }
+        .ltr-direction { direction: ltr; }
+    </style>
+</head>
+<body class="bg-background text-on-surface scroll-smooth">
+    <!-- Navigation Bar -->
+    <nav class="fixed top-0 w-full z-50 glass-effect border-b border-outline/10 h-24">
+        <div class="max-w-7xl mx-auto px-6 h-full flex items-center justify-between ltr-direction">
+            <div class="flex items-center gap-2">
+                <div class="logo-container">
+                    <img src="../assets/images/logo.png" alt="ClinicalMind Logo" class="h-20 w-auto">
+                </div>
+            </div>
+            
+            <div class="flex items-center gap-3">
+                <button onclick="toggleLanguage()" class="flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-primary/20 to-tertiary/20 hover:from-primary/30 hover:to-tertiary/30 text-primary hover:text-primary transition-all border border-primary/30 hover:border-primary/50 group">
+                    <span class="text-lg">🌐</span>
+                    <span class="text-sm font-bold">EN / AR</span>
+                </button>
+                <button onclick="toggleTheme()" class="w-10 h-10 rounded-full bg-surface-container/30 hover:bg-surface-container/50 text-on-surface-variant hover:text-primary transition-all border border-outline/20 hover:border-primary/30 flex items-center justify-center group flex-shrink-0">
+                    <span class="text-lg">🌙</span>
+                </button>
+                <button onclick="goToDashboard()" class="px-6 py-2 rounded-lg bg-primary text-surface font-bold hover:shadow-lg transition-all whitespace-nowrap">
+                    <span data-i18n="getStarted">Get Started</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-40 pb-20 px-6 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-30">
+            <div class="absolute top-20 left-10 w-72 h-72 bg-primary rounded-full mix-blend-multiply filter blur-3xl"></div>
+            <div class="absolute top-40 right-10 w-72 h-72 bg-tertiary rounded-full mix-blend-multiply filter blur-3xl"></div>
+        </div>
+
+        <div class="max-w-6xl mx-auto relative z-10">
+            <div class="text-center mb-12">
+                <h2 class="text-6xl md:text-7xl font-bold mb-6 gradient-text" data-i18n="tagline">Advanced AI-Powered Medical Diagnosis System</h2>
+                <p class="text-xl text-on-surface-variant mb-8 max-w-2xl mx-auto" data-i18n="description">Revolutionizing healthcare with cutting-edge artificial intelligence for accurate medical analysis and diagnosis</p>
+                
+                <div class="flex gap-4 justify-center flex-wrap">
+                    <button onclick="goToDashboard()" class="px-8 py-4 rounded-lg bg-gradient-to-r from-primary to-primary-container text-surface font-bold text-lg hover:shadow-2xl transition-all hover-lift">
+                        <span data-i18n="getStartedNow">Get Started Now</span>
+                    </button>
+                    <button onclick="window.location.href='about.html'" class="px-8 py-4 rounded-lg border-2 border-primary text-primary font-bold text-lg hover:bg-primary/10 transition-all">
+                        <span data-i18n="learnMore">Learn More</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Hero Image -->
+            <div class="mt-16 relative">
+                <div class="glass-effect glow-border rounded-2xl p-8 float-animation">
+                    <img src="../assets/images/medical.png?v=2" alt="Medical Analysis" class="w-full h-auto rounded-xl">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-20 px-6 bg-surface-container/30">
+        <div class="max-w-6xl mx-auto">
+            <h3 class="text-4xl font-bold text-center mb-16 gradient-text" data-i18n="features">Features</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Feature 1 -->
+                <div class="feature-card hover-lift">
+                    <div class="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center mb-4">
+                        <svg class="w-7 h-7 text-primary" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+                    </div>
+                    <h4 class="text-lg font-bold mb-2" data-i18n="feature1Title">Image Analysis</h4>
+                    <p class="text-on-surface-variant text-sm" data-i18n="feature1Desc">Advanced AI analysis of medical X-rays and imaging</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="feature-card hover-lift">
+                    <div class="w-12 h-12 rounded-lg bg-tertiary/20 flex items-center justify-center mb-4">
+                        <svg class="w-7 h-7 text-tertiary" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"/></svg>
+                    </div>
+                    <h4 class="text-lg font-bold mb-2" data-i18n="feature2Title">Symptom Diagnosis</h4>
+                    <p class="text-on-surface-variant text-sm" data-i18n="feature2Desc">Intelligent diagnosis based on patient symptoms</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="feature-card hover-lift">
+                    <div class="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center mb-4">
+                        <svg class="w-7 h-7 text-primary" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                    </div>
+                    <h4 class="text-lg font-bold mb-2" data-i18n="feature3Title">Real-time Results</h4>
+                    <p class="text-on-surface-variant text-sm" data-i18n="feature3Desc">Instant analysis and comprehensive reports</p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="feature-card hover-lift">
+                    <div class="w-12 h-12 rounded-lg bg-tertiary/20 flex items-center justify-center mb-4">
+                        <svg class="w-7 h-7 text-tertiary" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>
+                    </div>
+                    <h4 class="text-lg font-bold mb-2" data-i18n="feature4Title">Multi-language</h4>
+                    <p class="text-on-surface-variant text-sm" data-i18n="feature4Desc">Support for Arabic and English interfaces</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="py-20 px-6">
+        <div class="max-w-6xl mx-auto">
+            <h3 class="text-4xl font-bold text-center mb-16 gradient-text" data-i18n="howItWorks">How It Works</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Step 1 -->
+                <div class="text-center">
+                    <div class="flex justify-center mb-6">
+                        <div class="step-number">1</div>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3" data-i18n="step1">Upload or Enter Data</h4>
+                    <p class="text-on-surface-variant" data-i18n="step1Desc">Upload medical images or enter patient symptoms</p>
+                </div>
+
+                <!-- Arrow -->
+                <div class="hidden md:flex items-center justify-center">
+                    <span class="material-symbols-outlined text-4xl text-primary opacity-50">arrow_forward</span>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="text-center">
+                    <div class="flex justify-center mb-6">
+                        <div class="step-number">2</div>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3" data-i18n="step2">AI Analysis</h4>
+                    <p class="text-on-surface-variant" data-i18n="step2Desc">Our AI analyzes the data using advanced algorithms</p>
+                </div>
+
+                <!-- Arrow -->
+                <div class="hidden md:flex items-center justify-center">
+                    <span class="material-symbols-outlined text-4xl text-primary opacity-50">arrow_forward</span>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="text-center">
+                    <div class="flex justify-center mb-6">
+                        <div class="step-number">3</div>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3" data-i18n="step3">Get Results</h4>
+                    <p class="text-on-surface-variant" data-i18n="step3Desc">Receive comprehensive diagnosis and recommendations</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Section -->
+    <section class="py-20 px-6 bg-surface-container/30">
+        <div class="max-w-6xl mx-auto">
+            <h3 class="text-4xl font-bold text-center mb-16 gradient-text"><span data-i18n="whyChoose">Why Choose</span> ClinicalMind?</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Benefit 1 -->
+                <div class="glass-effect glow-border rounded-xl p-6 hover-lift">
+                    <div class="w-14 h-14 rounded-lg bg-primary/20 flex items-center justify-center mb-4">
+                        <span class="text-2xl">🎯</span>
+                    </div>
+                    <h4 class="text-lg font-bold mb-2" data-i18n="accuracy">High Accuracy</h4>
+                    <p class="text-on-surface-variant text-sm" data-i18n="accuracyDesc">State-of-the-art AI models trained on millions of medical cases</p>
+                </div>
+
+                <!-- Benefit 2 -->
+                <div class="glass-effect glow-border rounded-xl p-6 hover-lift">
+                    <div class="w-14 h-14 rounded-lg bg-tertiary/20 flex items-center justify-center mb-4">
+                        <span class="text-2xl">⚡</span>
+                    </div>
+                    <h4 class="text-lg font-bold mb-2" data-i18n="speed">Lightning Fast</h4>
+                    <p class="text-on-surface-variant text-sm" data-i18n="speedDesc">Get results in seconds, not hours</p>
+                </div>
+
+                <!-- Benefit 3 -->
+                <div class="glass-effect glow-border rounded-xl p-6 hover-lift">
+                    <div class="w-14 h-14 rounded-lg bg-primary/20 flex items-center justify-center mb-4">
+                        <span class="text-2xl">🔒</span>
+                    </div>
+                    <h4 class="text-lg font-bold mb-2" data-i18n="secure">Secure & Private</h4>
+                    <p class="text-on-surface-variant text-sm" data-i18n="secureDesc">Your patient data is encrypted and protected</p>
+                </div>
+
+                <!-- Benefit 4 -->
+                <div class="glass-effect glow-border rounded-xl p-6 hover-lift">
+                    <div class="w-14 h-14 rounded-lg bg-tertiary/20 flex items-center justify-center mb-4">
+                        <span class="text-2xl">🎧</span>
+                    </div>
+                    <h4 class="text-lg font-bold mb-2" data-i18n="support">24/7 Support</h4>
+                    <p class="text-on-surface-variant text-sm" data-i18n="supportDesc">Round-the-clock technical support</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-20 px-6">
+        <div class="max-w-4xl mx-auto">
+            <h3 class="text-4xl font-bold text-center mb-8 gradient-text" data-i18n="aboutTitle">About ClinicalMind</h3>
+            <p class="text-lg text-on-surface-variant text-center leading-relaxed" data-i18n="aboutDesc">ClinicalMind is a revolutionary AI-powered medical intelligence platform designed to assist healthcare professionals in making accurate diagnoses. Our system combines advanced machine learning algorithms with medical expertise to provide reliable analysis of medical images and patient symptoms.</p>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 px-6 bg-gradient-to-r from-primary/20 to-tertiary/20">
+        <div class="max-w-4xl mx-auto text-center">
+            <h3 class="text-4xl font-bold mb-6 gradient-text" data-i18n="getStartedNow">Get Started Now</h3>
+            <p class="text-lg text-on-surface-variant mb-8" data-i18n="startAnalyzing">Start Analyzing Medical Cases</p>
+            <button onclick="goToDashboard()" class="px-8 py-4 rounded-lg bg-gradient-to-r from-primary to-primary-container text-surface font-bold text-lg hover:shadow-2xl transition-all hover-lift">
+                <span data-i18n="getStarted">Get Started</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 px-6 border-t border-outline/10 bg-surface-container/50">
+        <div class="max-w-6xl mx-auto text-center text-on-surface-variant">
+            <p data-i18n="footer">© 2026 ClinicalMind. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../js/home-script.js"></script>
+</body>
+</html>

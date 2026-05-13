@@ -1,0 +1,282 @@
+/* Light Mode Colors - Complete Override */
+html:not(.dark) {
+    --bg-color: #f5f7fa;
+    --surface-color: #ffffff;
+    --text-color: #000000;
+    --text-secondary: #1a1a1a;
+    --border-color: #e2e8f0;
+    --accent-color: #2563eb;
+}
+
+html:not(.dark) body {
+    background-color: #f5f7fa !important;
+    color: #000000 !important;
+}
+
+html:not(.dark) header {
+    background: #ffffff !important;
+    border-bottom: 2px solid #e2e8f0 !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08) !important;
+}
+
+html:not(.dark) aside {
+    background: #ffffff !important;
+    border-right: 2px solid #e2e8f0 !important;
+    box-shadow: 1px 0 3px rgba(0, 0, 0, 0.05) !important;
+}
+
+html:not(.dark) .glass-panel {
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+}
+
+html:not(.dark) .glass-panel:hover {
+    border-color: #cbd5e1 !important;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.1) !important;
+}
+
+html:not(.dark) * {
+    color: #000000 !important;
+}
+
+html:not(.dark) .text-on-surface {
+    color: #000000 !important;
+}
+
+html:not(.dark) .text-on-surface-variant {
+    color: #1a1a1a !important;
+}
+
+html:not(.dark) h1, html:not(.dark) h2, html:not(.dark) h3, html:not(.dark) h4, html:not(.dark) h5, html:not(.dark) h6 {
+    color: #000000 !important;
+    font-weight: 700 !important;
+}
+
+html:not(.dark) p {
+    color: #1a1a1a !important;
+}
+
+html:not(.dark) span {
+    color: #000000 !important;
+}
+
+html:not(.dark) div {
+    color: #000000 !important;
+}
+
+html:not(.dark) textarea {
+    background-color: #f8fafc !important;
+    color: #000000 !important;
+    border: 2px solid #e2e8f0 !important;
+    border-radius: 0.75rem !important;
+}
+
+html:not(.dark) textarea:focus {
+    border-color: #2563eb !important;
+    background-color: #ffffff !important;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1) !important;
+}
+
+html:not(.dark) textarea::placeholder {
+    color: #666666 !important;
+}
+
+html:not(.dark) input[type="file"] {
+    color: #000000 !important;
+}
+
+html:not(.dark) input[type="file"]::file-selector-button {
+    background-color: #2563eb !important;
+    color: #ffffff !important;
+    border: none !important;
+    padding: 0.5rem 1rem !important;
+    border-radius: 0.5rem !important;
+    cursor: pointer !important;
+    font-weight: 600 !important;
+}
+
+html:not(.dark) input[type="file"]::file-selector-button:hover {
+    background-color: #1d4ed8 !important;
+}
+
+html:not(.dark) button {
+    color: #ffffff !important;
+}
+
+html:not(.dark) button:disabled {
+    opacity: 0.5 !important;
+    cursor: not-allowed !important;
+}
+
+html:not(.dark) .bg-surface-container-high {
+    background-color: #f1f5f9 !important;
+}
+
+html:not(.dark) .bg-surface-container-high\/30 {
+    background-color: rgba(241, 245, 249, 0.3) !important;
+}
+
+html:not(.dark) .bg-tertiary\/20 {
+    background-color: rgba(16, 185, 129, 0.2) !important;
+}
+
+html:not(.dark) .text-tertiary {
+    color: #10b981 !important;
+}
+
+html:not(.dark) .bg-primary\/10 {
+    background-color: rgba(37, 99, 235, 0.1) !important;
+}
+
+html:not(.dark) .text-primary {
+    color: #2563eb !important;
+}
+
+html:not(.dark) .border-outline\/10 {
+    border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+html:not(.dark) .text-on-surface-variant\/70 {
+    color: rgba(26, 26, 26, 0.7) !important;
+}
+
+html:not(.dark) .hover\:text-on-surface:hover {
+    color: #000000 !important;
+}
+
+html:not(.dark) .hover\:bg-surface-container-high:hover {
+    background-color: #f1f5f9 !important;
+}
+
+html:not(.dark) .dark\:hover\:bg-white\/5:hover {
+    background-color: transparent !important;
+}
+
+html:not(.dark) .dark\:bg-primary-container\/20 {
+    background-color: transparent !important;
+}
+
+html:not(.dark) .dark\:text-primary {
+    color: #2563eb !important;
+}
+
+html:not(.dark) .dark\:text-primary {
+    color: #2563eb !important;
+}
+
+html:not(.dark) .border-l-4 {
+    border-left: 4px solid #2563eb !important;
+}
+
+html:not(.dark) .shadow-sm {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+}
+
+html:not(.dark) .font-headline-sm {
+    font-weight: 700 !important;
+    font-size: 1rem !important;
+}
+
+html:not(.dark) .rounded-2xl {
+    border-radius: 1rem !important;
+}
+
+html:not(.dark) .p-panel-padding {
+    padding: 1.5rem !important;
+}
+
+html:not(.dark) .rounded-xl {
+    border-radius: 0.75rem !important;
+}
+
+html:not(.dark) .rounded-full {
+    border-radius: 9999px !important;
+}
+
+html:not(.dark) .space-y-6 > * + * {
+    margin-top: 1.5rem !important;
+}
+
+html:not(.dark) .space-y-3 > * + * {
+    margin-top: 0.75rem !important;
+}
+
+html:not(.dark) .space-y-2 > * + * {
+    margin-top: 0.5rem !important;
+}
+
+html:not(.dark) .flex {
+    display: flex !important;
+}
+
+html:not(.dark) .gap-2 {
+    gap: 0.5rem !important;
+}
+
+html:not(.dark) .gap-4 {
+    gap: 1rem !important;
+}
+
+html:not(.dark) .items-center {
+    align-items: center !important;
+}
+
+html:not(.dark) .justify-between {
+    justify-content: space-between !important;
+}
+
+html:not(.dark) .px-4 {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+}
+
+html:not(.dark) .py-2 {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+}
+
+html:not(.dark) .px-3 {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+}
+
+html:not(.dark) .p-3 {
+    padding: 0.75rem !important;
+}
+
+html:not(.dark) .w-full {
+    width: 100% !important;
+}
+
+html:not(.dark) .h-full {
+    height: 100% !important;
+}
+
+html:not(.dark) .object-contain {
+    object-fit: contain !important;
+}
+
+html:not(.dark) .flex-1 {
+    flex: 1 1 0% !important;
+}
+
+html:not(.dark) .h-2 {
+    height: 0.5rem !important;
+}
+
+html:not(.dark) .font-bold {
+    font-weight: 700 !important;
+}
+
+html:not(.dark) .text-sm {
+    font-size: 0.875rem !important;
+}
+
+html:not(.dark) .ul {
+    list-style: none !important;
+}
+
+html:not(.dark) .li {
+    display: list-item !important;
+}
